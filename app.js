@@ -26,6 +26,8 @@ app.ChordTypeSelector = Backbone.View.extend({
 	    break;
 	case "mM7":
 	    break;
+	case "dim":
+	    break;
 	default:
 	    alert("Invalid chord type! [" + val + "]");
 	}

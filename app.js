@@ -2,7 +2,38 @@
 
 var app = app || {};
 
+app.ChordTypeSelector = Backbone.View.extend({
+
+    el: "#chord_type",
+
+    val: function () {
+	return this.$el.val();
+    },
+
+    events: {
+	"change": "onChange"
+    },
+
+    onChange: function (ev) {
+	var val = this.val();
+	console.log(val);
+	switch (val) {
+	case "M7":
+	    break;
+	case "7":
+	    break;
+	case "m7":
+	    break;
+	case "mM7":
+	    break;
+	default:
+	    alert("Invalid chord type! [" + val + "]");
+	}
+    }
+});
+
 app.GoButton = Backbone.View.extend({
+
     el: "#go",
 
     events: {
@@ -11,7 +42,7 @@ app.GoButton = Backbone.View.extend({
 
     onClick: function (ev) {
 	var root = $("#root").val(),
-	    chordType = $("#chord_type").val(),
+	    chordType = app.chordTypeSelector.val(),
 	    tensionType = $("#tension_type").val(),
 	    data = [],
 	    tones,
@@ -55,7 +86,11 @@ app.FletboardTable = Backbone.View.extend({
 	    "paging":   false,
 	    "ordering": false,
 	    "info":     false,
-	    "bFilter": false
+	    "bFilter": false,
+	    "oLanguage": {
+		"sZeroRecords": "",
+		"sEmptyTable": ""
+	    }
 	});
     },
 
@@ -73,4 +108,5 @@ app.FletboardTable = Backbone.View.extend({
 function init () {
     app.fb = new app.FletboardTable();
     app.goButton = new app.GoButton();
+    app.chordTypeSelector = new app.ChordTypeSelector();
 }

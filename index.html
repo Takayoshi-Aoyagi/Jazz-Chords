@@ -6,7 +6,12 @@
   </head>
   <body>
     <div id="main">
+      <div id="header">
+	<h1>Jazz Chords</h1>
+      </div>
+      
       <div>
+	<label for="root">Enter chord type: </label>
 	<select id="root">
 	  <option value="C" selected>C</option>
 	  <option value="Db(C#)">Db(C#)</option>
@@ -37,13 +42,17 @@
 	  <option value="b5">b5</option>
 	</select>
 
-	<button id="go">GO!</button>
-	
+	<button id="go" style="background-color:skyblue">GO!</button>
       </div>
-      <div id="fletboard_view">
-	<table id="fletboard" class="cell-border" cellspacing="0" width="100%"></table>
+
+      <div id="guitar">
+	<h2>Chord tones for guitar</h2>
+	<div id="fletboard_view">
+	  <table id="fletboard" class="cell-border" cellspacing="0" width="100%" style="font-size: 80%"></table>
+	</div>
       </div>
-      <div>
+
+      <div id="footer">
       </div>
     </div>
     <script src="./lib/underscore-min.js"></script>

@@ -7,7 +7,9 @@ app.ChordTypeSelector = Backbone.View.extend({
     el: "#chord_type",
 
     val: function () {
-	return this.$el.val();
+	var dom = this.$el.children(":checked");
+	var val = dom.val();
+	return val;
     },
 
     events: {

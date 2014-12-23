@@ -3,6 +3,7 @@
     <meta charset="utf-8">
     <title>Jazz Guitar Chords</title>
     <link rel="stylesheet" href="./css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="./css/default.css">
   </head>
   <body>
     <div id="main">
@@ -11,39 +12,71 @@
       </div>
       
       <div>
-	<div id="root">
-	  <input type="radio" name="root" value="C" checked>C</input>
-	  <input type="radio" name="root" value="Db">Db(C#)</input>
-	  <input type="radio" name="root" value="D">D</input>
-	  <input type="radio" name="root" value="Eb">Eb(D#)</input>
-	  <input type="radio" name="root" value="E">E</input>
-	  <input type="radio" name="root" value="F">F</input>
-	  <input type="radio" name="root" value="Gb">Gb(F#)</input>
-	  <input type="radio" name="root" value="G">G</input>
-	  <input type="radio" name="root" value="Ab">Ab(G#)</input>
-	  <input type="radio" name="root" value="A">A</input>
-	  <input type="radio" name="root" value="Bb">Bb(A#)</input>
-	  <input type="radio" name="root" value="B">B</input>
+	<div id="root" class="radio" style="clear:both">
+	  <input type="radio" name="root" value="C" id="selectC" checked>
+	  <label for="selectC">C</label>
+	  <input type="radio" name="root" value="Db" id="selectDb">
+	  <label for="selectDb">Db</label>
+	  <input type="radio" name="root" value="D" id="selectD">
+	  <label for="selectD">D</label>
+	  <input type="radio" name="root" value="Eb" id="selectEb">
+	  <label for="selectEb">Eb</label>
+	  <input type="radio" name="root" value="E" id="selectE">
+	  <label for="selectE">E</label>
+	  <input type="radio" name="root" value="F" id="selectF">
+	  <label for="selectF">F</label>
+	  <input type="radio" name="root" value="Gb" id="selectGb">
+	  <label for="selectGb">Gb</label>
+	  <input type="radio" name="root" value="G" id="selectG">
+	  <label for="selectG">G</label>
+	  <input type="radio" name="root" value="Ab" id="selectAb">
+	  <label for="selectAb">Ab</label>
+	  <input type="radio" name="root" value="A" id="selectA">
+	  <label for="selectA">A</label>
+	  <input type="radio" name="root" value="Bb" id="selectBb">
+	  <label for="selectBb">Bb</label>
+	  <input type="radio" name="root" value="B" id="selectB">
+	  <label for="selectB">B</label>
 	</div>
 
-	<div id="chord_type">
-	  <input type="radio" name="chord_type" value="M7" checked>M7</input>
-	  <input type="radio" name="chord_type" value="7">7</input>
-	  <input type="radio" name="chord_type" value="m7">m7</input>
-	  <input type="radio" name="chord_type" value="mM7">mM7</input>
-	  <input type="radio" name="chord_type" value="dim">dim</input>
+	<div id="chord_type" class="radio" style="clear:both; padding-top: 2px">
+	  <input type="radio" name="chord_type" value="M7" id="selectM7" checked>
+	  <label for="selectM7">M7</label>
+	  <input type="radio" name="chord_type" value="7" id="select7">
+	  <label for="select7">7</label>
+	  <input type="radio" name="chord_type" value="m7" id="selectm7">
+	  <label for="selectm7">m7</label>
+	  <input type="radio" name="chord_type" value="mM7" id="selectmM7">
+	  <label for="selectmM7">mM7</label>
+	  <input type="radio" name="chord_type" value="dim" id="selectdim">
+	  <label for="selectdim">dim</label>
 	</div>
 
-	<div id="tension_type">
-	  <input type="radio" name="tension_type" value="" checked>-</input>
-	  <input type="radio" name="tension_type" value="9">9</input>
-	  <input type="radio" name="tension_type" value="9 13">9 13</input>
-	  <input type="radio" name="tension_type" value="b9 b13">b9 b13</input>
-	  <input type="radio" name="tension_type" value="#9 b13">#9 b13</input>
-	  <input type="radio" name="tension_type" value="b5">b5</input>
+	<div id="tension_type" class="radio" style="clear:both; padding-top: 2px">
+	  <input type="radio" name="tension_type" value="" id="selectNone" checked>
+	  <label for="selectNone">-</label>
+	  <input type="radio" name="tension_type" value="9" id="select9">
+	  <label for="select9">9</label>
+	  <input type="radio" name="tension_type" value="9 13" id="select913">
+	  <label for="select913">9 13</label>
+	  <input type="radio" name="tension_type" value="b9 b13" id="selectb9b13">
+	  <label for="selectb9b13">b9 b13</label>
+	  <input type="radio" name="tension_type" value="#9 b13" id="select#9b13">
+	  <label for="select#9b13">#9 b13</label>
+	  <input type="radio" name="tension_type" value="b5" id="selectb5">
+	  <label for="selectb5">b5</label>
 	</div>
 
-	<button id="go" style="background-color:skyblue">GO!</button>
+	<div style="clear:both; padding-top: 2px">
+	  <button id="go" style="background-color:skyblue">GO!</button>
+	</div>
+      </div>
+
+      
+      <div id="chord_name">
+	<h2><div id="root_name" style="float:left"></div></h2>
+	<div id="chord_type_name" style="text-align: buttom"></div>
+	<div id="tension_type_name"></div>
       </div>
 
       <div id="guitar">

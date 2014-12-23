@@ -2,6 +2,24 @@
 
 var app = app || {};
 
+app.RootSelector = Backbone.View.extend({
+
+    el: "#root",
+
+    val: function () {
+	var dom = this.$el.children(":checked");
+	var val = dom.val();
+	return val;
+    },
+
+    events: {
+	"change": "onChange"
+    },
+
+    onChange: function (ev) {
+    }
+});
+
 app.ChordTypeSelector = Backbone.View.extend({
 
     el: "#chord_type",
@@ -18,26 +36,7 @@ app.ChordTypeSelector = Backbone.View.extend({
 
     onChange: function (ev) {
 	var val = this.val();
-	console.log(val);
-	switch (val) {
-	case "M7":
-	    app.tensionTypeSelector.activateTension("M7")
-	    break;
-	case "7":
-	    app.tensionTypeSelector.activateTension("7")
-	    break;
-	case "m7":
-	    app.tensionTypeSelector.activateTension("m7")
-	    break;
-	case "mM7":
-	    app.tensionTypeSelector.activateTension("mM7")
-	    break;
-	case "dim":
-	    app.tensionTypeSelector.activateTension("dim")
-	    break;
-	default:
-	    alert("Invalid chord type! [" + val + "]");
-	}
+	app.tensionTypeSelector.activateTension(val)
     }
 });
 
@@ -122,7 +121,7 @@ app.GoButton = Backbone.View.extend({
     },
 
     onClick: function (ev) {
-	var root = $("#root").val(),
+	var root = app.rootSelector.val(),
 	    chordType = app.chordTypeSelector.val(),
 	    tensionType = app.tensionTypeSelector.val(),
 	    data = [],
@@ -190,5 +189,6 @@ function init () {
     app.fb = new app.FletboardTable();
     app.goButton = new app.GoButton();
     app.chordTypeSelector = new app.ChordTypeSelector();
+    app.rootSelector = new app.RootSelector();
     app.tensionTypeSelector = new app.TensionTypeSelector();
 }

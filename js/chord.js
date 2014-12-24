@@ -31,13 +31,14 @@ Chord.parse = function (chord, tensions) {
 	thirdSymbol = m[2] == "" ? "M" : m[2],
         third = Pitch.getPitch(root,thirdSymbol),
         fifth = Pitch.getPitch(root, "5"),
-        seventh = Pitch.getPitch(root, m[3]),
+	seventhSymbol = m[3],
+	seventh = Pitch.getPitch(root, seventhSymbol),
         dic = {};
 
-        dic[root] = "1"
-        dic[third] = "3"
-        dic[fifth] = "5"
-        dic[seventh] = "7"
+    dic[root] = "1";
+    dic[third] = thirdSymbol == "M" ? "3" : "b3";
+    dic[fifth] = "5";
+    dic[seventh] = seventhSymbol == "M7" ? "7" : "b7";
 
     if (tensions) {
         tensions.forEach(function (tension) {

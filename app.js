@@ -24,6 +24,11 @@ app.ChordTypeSelector = Backbone.View.extend({
 
     el: "#chord_type",
 
+    initialize: function () {
+	this.$el.find("input[value=M7]").click();
+	app.tensionTypeSelector.activateTension("M7")
+    },
+    
     val: function () {
 	var dom = this.$el.children(":checked");
 	var val = dom.val();
@@ -198,7 +203,8 @@ app.FletboardTable = Backbone.View.extend({
 function init () {
     app.fb = new app.FletboardTable();
     app.goButton = new app.GoButton();
+    app.tensionTypeSelector = new app.TensionTypeSelector();
     app.chordTypeSelector = new app.ChordTypeSelector();
     app.rootSelector = new app.RootSelector();
-    app.tensionTypeSelector = new app.TensionTypeSelector();
+
 }

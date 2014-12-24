@@ -127,7 +127,8 @@ app.GoButton = Backbone.View.extend({
 	    data = [],
 	    tones,
 	    pos,
-	    tensions;
+	    tensions,
+	    displayRoot;
 	console.log(root + "," + chordType + "," + tensionType);
 
 	// chord name
@@ -135,8 +136,11 @@ app.GoButton = Backbone.View.extend({
 	$("#chord_type_name").text(chordType);
 	$("#tension_type_name").text(tensionType);
 
+	// display root?
+	displayRoot = Boolean($("#display_root").prop("checked"));
+	
 	tensions = tensionType.split(" ");
-	tones = Chord.parse(root + chordType, tensions);
+	tones = Chord.parse(root + chordType, tensions, displayRoot);
 	pos = Fingerboard.getPosMap(tones);
     
 	console.log(pos);

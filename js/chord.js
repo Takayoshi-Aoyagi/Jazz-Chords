@@ -20,7 +20,7 @@ Chord.parseDim = function (chord) {
     return dic;
 };
 
-Chord.parse = function (chord, tensions) {
+Chord.parse = function (chord, tensions, displayRoot) {
     if (chord.indexOf("dim") > 0) {
 	return Chord.parseDim(chord);
     }
@@ -49,7 +49,9 @@ Chord.parse = function (chord, tensions) {
 
     // omit root when tension contains 9th
     if (tensions.indexOf("9") >= 0 || tensions.indexOf("b9") >= 0 || tensions.indexOf("#9") >= 0) {
-        delete dic[root];
+	if (!displayRoot) {
+            delete dic[root];
+	}
     }
     
     // omit 5th when tension contains 13th

@@ -133,6 +133,7 @@ app.GoButton = Backbone.View.extend({
 	// chord name
 	$("#root_name").text(root);
 	$("#chord_type_name").text(chordType);
+	$("#tension_type_name").text(tensionType);
 
 	tensions = tensionType.split(" ");
 	tones = Chord.parse(root + chordType, tensions);

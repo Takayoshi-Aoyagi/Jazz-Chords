@@ -61,7 +61,7 @@ app.TensionTypeSelector = Backbone.View.extend({
 
     activateTension: function (chordType) {
 	var that = this,
-	    tensions = [];  //"", "9", "9 13", "b9 b13", "#9 b13", "b5"],
+	    tensions = [];  //"", "9", "9 13", "b9 b13", "#9 b13", "11"],
 	switch (chordType) {
 	case "M7":
 	    tensions.push("9");
@@ -75,7 +75,9 @@ app.TensionTypeSelector = Backbone.View.extend({
 	    break;
 	case 'm7':
 	    tensions.push("9");
-	    tensions.push("b5");
+	    break;
+	case 'm7b5':
+	    tensions.push("11");
 	    break;
 	case 'mM7':
 	    break;
@@ -110,7 +112,7 @@ app.TensionTypeSelector = Backbone.View.extend({
 	    break;
 	case "#9 b13":
 	    break;
-	case "b5":
+	case "11":
 	    break;
 	default:
 	    alert("Invalid chord type! [" + val + "]");

@@ -61,38 +61,39 @@ app.TensionTypeSelector = Backbone.View.extend({
 
     activateTension: function (chordType) {
 	var that = this,
-	tensions = ["", "9", "9 13", "b9 b13", "#9 b13", "b5"],
-	conf = {};
+	    tensions = [];  //"", "9", "9 13", "b9 b13", "#9 b13", "b5"],
 	switch (chordType) {
 	case "M7":
-	    conf['b9 b13'] = true;
-	    conf['#9 b13'] = true;
-	    conf['b5'] = true;
+	    tensions.push("9");
+	    tensions.push("9 13");
 	    break;
 	case '7':
-	    conf['b5'] = true;
+	    tensions.push("9");
+	    tensions.push("9 13");
+	    tensions.push("b9 b13");
+	    tensions.push("#9 b13");
 	    break;
 	case 'm7':
-	    conf['9 13'] = true;
-	    conf['b9 b13'] = true;
-	    conf['#9 b13'] = true;
+	    tensions.push("9");
+	    tensions.push("b5");
 	    break;
 	case 'mM7':
 	    break;
 	case 'dim':
-	    conf['9'] = true;
-	    conf['9 13'] = true;
-	    conf['b9 b13'] = true;
-	    conf['#9 b13'] = true;
-	    conf['b5'] = true;
 	    break;
 	}
-	tensions.forEach(function (tension) {
-	    var sel = ":input[value='" + tension + "']",
-	        flg = conf[tension];
-	    flg = flg === true ? true : false
-	    that.$el.find(sel).attr("disabled", flg);
+	this.$el.children().remove();
+	this.$el.append('<input type="radio" name="tension_type" value="" id="selectNone" checked>');
+	this.$el.append('<label for="selectNone">-</label>');
+	tensions.forEach(function (key) {
+	    var tension = key,
+		value = tension.split(' ').join(''),
+		input = '<input type="radio" name="tension_type" value="' + tension + '" id="select'+ value + '" checked>',
+		label = '<label for="select' + value + '">' + tension + '</label>';
+	    that.$el.append(input);
+	    that.$el.append(label);
 	});
+	this.$el.children().first().click();
     },
 
     onChange: function (ev) {
@@ -173,7 +174,7 @@ app.FletboardTable = Backbone.View.extend({
 	    title = {
 		"title": String(i),
 		"width": "50px"
-	    }
+	    };
 	    columns.push(title);
 	}
 	this.dt = $(this.el).DataTable({
@@ -206,5 +207,4 @@ function init () {
     app.tensionTypeSelector = new app.TensionTypeSelector();
     app.chordTypeSelector = new app.ChordTypeSelector();
     app.rootSelector = new app.RootSelector();
-
 }

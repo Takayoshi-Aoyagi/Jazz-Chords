@@ -10,73 +10,77 @@
       <div id="header">
 	<h1>Jazz Chords</h1>
       </div>
-      
+
       <div>
-	<div id="root" class="radio" style="clear:both">
-	  <input type="radio" name="root" value="C" id="selectC" checked>
-	  <label for="selectC">C</label>
-	  <input type="radio" name="root" value="Db" id="selectDb">
-	  <label for="selectDb">Db</label>
-	  <input type="radio" name="root" value="D" id="selectD">
-	  <label for="selectD">D</label>
-	  <input type="radio" name="root" value="Eb" id="selectEb">
-	  <label for="selectEb">Eb</label>
-	  <input type="radio" name="root" value="E" id="selectE">
-	  <label for="selectE">E</label>
-	  <input type="radio" name="root" value="F" id="selectF">
-	  <label for="selectF">F</label>
-	  <input type="radio" name="root" value="Gb" id="selectGb">
-	  <label for="selectGb">Gb</label>
-	  <input type="radio" name="root" value="G" id="selectG">
-	  <label for="selectG">G</label>
-	  <input type="radio" name="root" value="Ab" id="selectAb">
-	  <label for="selectAb">Ab</label>
-	  <input type="radio" name="root" value="A" id="selectA">
-	  <label for="selectA">A</label>
-	  <input type="radio" name="root" value="Bb" id="selectBb">
-	  <label for="selectBb">Bb</label>
-	  <input type="radio" name="root" value="B" id="selectB">
-	  <label for="selectB">B</label>
+	<div style="float:left">
+	  <div id="chord_name" style="width:180px; padding-top:5px; border-width:2px; border-style:solid; padding: 3px; margin: 5px;">
+	    <div id="root_name" style="float:left; font-size: 200%; height:50px; padding-left:10px;"></div>
+	    <div id="chord_type_name" style="height:50px;display:table-cell;text-align:center;vertical-align:bottom;"></div>
+	    <div id="tension_type_name" style="height:50px;display:table-cell;text-align:center;vertical-align:top;"></div>
+	  </div>
 	</div>
+	
+	<div style="float:left">
+	  <div id="root" class="radio" style="clear:both">
+	    <input type="radio" name="root" value="C" id="selectC" checked>
+	    <label for="selectC">C</label>
+	    <input type="radio" name="root" value="Db" id="selectDb">
+	    <label for="selectDb">Db</label>
+	    <input type="radio" name="root" value="D" id="selectD">
+	    <label for="selectD">D</label>
+	    <input type="radio" name="root" value="Eb" id="selectEb">
+	    <label for="selectEb">Eb</label>
+	    <input type="radio" name="root" value="E" id="selectE">
+	    <label for="selectE">E</label>
+	    <input type="radio" name="root" value="F" id="selectF">
+	    <label for="selectF">F</label>
+	    <input type="radio" name="root" value="Gb" id="selectGb">
+	    <label for="selectGb">Gb</label>
+	    <input type="radio" name="root" value="G" id="selectG">
+	    <label for="selectG">G</label>
+	    <input type="radio" name="root" value="Ab" id="selectAb">
+	    <label for="selectAb">Ab</label>
+	    <input type="radio" name="root" value="A" id="selectA">
+	    <label for="selectA">A</label>
+	    <input type="radio" name="root" value="Bb" id="selectBb">
+	    <label for="selectBb">Bb</label>
+	    <input type="radio" name="root" value="B" id="selectB">
+	    <label for="selectB">B</label>
+	  </div>
 
-	<div id="chord_type" class="radio" style="clear:both; padding-top: 2px">
-	  <input type="radio" name="chord_type" value="M7" id="selectM7">
-	  <label for="selectM7">M7</label>
-	  <input type="radio" name="chord_type" value="7" id="select7">
-	  <label for="select7">7</label>
-	  <input type="radio" name="chord_type" value="m7" id="selectm7">
-	  <label for="selectm7">m7</label>
-	  <input type="radio" name="chord_type" value="m7b5" id="selectm7b5">
-	  <label for="selectm7b5">m7b5</label>
-	  <input type="radio" name="chord_type" value="mM7" id="selectmM7">
-	  <label for="selectmM7">mM7</label>
-	  <input type="radio" name="chord_type" value="dim" id="selectdim">
-	  <label for="selectdim">dim</label>
-	</div>
+	  <div id="chord_type" class="radio" style="clear:both; padding-top: 2px">
+	    <input type="radio" name="chord_type" value="M7" id="selectM7">
+	    <label for="selectM7">M7</label>
+	    <input type="radio" name="chord_type" value="7" id="select7">
+	    <label for="select7">7</label>
+	    <input type="radio" name="chord_type" value="m7" id="selectm7">
+	    <label for="selectm7">m7</label>
+	    <input type="radio" name="chord_type" value="m7b5" id="selectm7b5">
+	    <label for="selectm7b5">m7b5</label>
+	    <input type="radio" name="chord_type" value="mM7" id="selectmM7">
+	    <label for="selectmM7">mM7</label>
+	    <input type="radio" name="chord_type" value="dim" id="selectdim">
+	    <label for="selectdim">dim</label>
+	  </div>
 
-	<div id="tension_type" class="radio" style="clear:both; padding-top: 2px">
-	</div>
-
-	<div style="clear:both">
-	  <input type="checkbox" id="display_root"> Display root
-	</div>
-	<div style="clear:both; padding-top: 2px">
-	  <button id="go" style="background-color:skyblue; width:65px">GO!</button>
+	  <div id="tension_type" class="radio" style="clear:both; padding-top: 2px">
+	  </div>
+      
+	  <div style="clear:both">
+	    <input type="checkbox" id="display_root"> Display root
+	  </div>
+	  <div style="clear:both; padding-top: 2px">
+	    <button id="go" style="background-color:skyblue; width:65px">GO!</button>
+	  </div>
 	</div>
       </div>
-
-      <hr style="margin-bottom: 10px;">
-
-      <div id="chord_name" style="width:180px; padding-top:5px; border-width:2px; border-style:solid; padding: 3px; margin: 5px;">
-	<div id="root_name" style="float:left; font-size: 200%; height:50px; padding-left:10px;"></div>
-	<div id="chord_type_name" style="height:50px;display:table-cell;text-align:center;vertical-align:bottom;"></div>
-	<div id="tension_type_name" style="height:50px;display:table-cell;text-align:center;vertical-align:top;"></div>
-      </div>
+            
+      <hr style="clear:both; margin-bottom:10px; margin-top:10px;">
 
       <div id="guitar" style="clear:both">
-	<h2>Chord tones for guitar</h2>
+	<h3>Chord tones for guitar</h3>
 	<div id="fletboard_view">
-	  <table id="fletboard" class="cell-border" cellspacing="0" width="100%" style="font-size: 70%"></table>
+	  <table id="fletboard" class="cell-border" cellspacing="0" width="100%" style="font-size:70%"></table>
 	</div>
       </div>
 

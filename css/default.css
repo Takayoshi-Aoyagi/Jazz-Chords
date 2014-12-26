@@ -27,3 +27,33 @@
     background-color: #a1b91d;
     color: #fff;
 }
+
+.root_note input{
+    display: none;
+}
+.root_note label{
+    display: block;
+    float: left;
+    cursor: pointer;
+    width: 35px;
+    margin: 0;
+    padding: 7px 5px;
+    border-right: 1px solid #abb2b7;
+    background: #bdc3c7;
+    color: #555e64;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1;
+    transition: .2s;
+}
+.root_note label:first-of-type{
+    border-radius: 3px 0 0 3px;
+}
+.root_note label:last-of-type{
+    border-right: 0px;
+    border-radius: 0 3px 3px 0;
+}
+.root_note input[type="radio"]:checked + label {
+    background-color: #a1b91d;
+    color: #fff;
+}

@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="./css/default.css">
   </head>
   <body>
-    <div id="main">
+    <div id="body">
       <div id="header">
 	<h1>Jazz Chords</h1>
       </div>
 
-      <div>
+      <div id="main">
 	<div style="float:left">
 	  <div id="chord_name" style="width:150px; padding-top:5px; border-width:2px; border-style:solid; padding: 3px; margin: 5px;">
 	    <div id="root_name" style="float:left; font-size: 200%; height:50px; padding-left:10px;"></div>
@@ -63,8 +63,7 @@
 	    <label for="selectdim">dim</label>
 	  </div>
 
-	  <div id="tension_type" class="radio" style="clear:both; padding-top: 2px">
-	  </div>
+	  <div id="tension_type" class="radio" style="clear:both; padding-top: 2px"></div>
       
 	  <div style="clear:both">
 	    <input type="checkbox" id="display_root"> Display root
@@ -73,24 +72,25 @@
 	    <button id="go" style="background-color:skyblue; width:65px">GO!</button>
 	  </div>
 	</div>
-      </div>
-            
-      <hr style="clear:both; margin-bottom:10px; margin-top:10px;">
 
-      <div id="guitar" style="clear:both">
-	<h3>Chord tones for guitar</h3>
-	<div id="fletboard_view">
-	  <table id="fletboard" class="cell-border" cellspacing="0" width="100%" style="font-size:70%"></table>
+	<hr style="clear:both; margin-bottom:10px; margin-top:10px;">
+
+	<div id="guitar" style="clear:both">
+	  <h3>Chord tones for guitar</h3>
+	  <div id="fletboard_view">
+	    <table id="fletboard" class="cell-border" cellspacing="0" width="100%" style="font-size:70%"></table>
+	  </div>
 	</div>
       </div>
-
+      
       <div id="footer">
       </div>
     </div>
-    <script src="./lib/underscore-min.js"></script>
-    <script src="./lib/jquery-2.1.1.min.js"></script>
-    <script src="./lib/backbone-min.js"></script>
-    <script src="./lib/jquery.dataTables.min.js"></script>
+    <script src="./bower_components/underscore/underscore-min.js"></script>
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/backbone/backbone.js"></script>
+    <script src="./bower_components/jqueryui/jquery-ui.min.js"></script>
+    <script src="./bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="./js/utils.js"></script>
     <script src="./js/pitch.js"></script>
     <script src="./js/chord.js"></script>

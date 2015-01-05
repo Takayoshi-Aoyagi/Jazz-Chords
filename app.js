@@ -6,6 +6,23 @@ app.RootSelector = Backbone.View.extend({
 
     el: "#root",
 
+    initialize: function () {
+	var that = this;
+	Pitch.pitches.forEach(function (root, i) {
+	    var input, label;
+	    if (i == 0) {
+		input = '<input type="radio" name="root" value="' + root +
+		    '" id="select' + root + '" checked>';
+	    } else {
+		input = '<input type="radio" name="root" value="' + root +
+		    '" id="select' + root + '">';
+	    }
+	    label = '<label for="select' + root + '">' + root + '</label>';
+	    that.$el.append(input);
+	    that.$el.append(label);
+	});
+    },
+    
     val: function () {
 	var dom = this.$el.children(":checked");
 	var val = dom.val();

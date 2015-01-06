@@ -42,7 +42,17 @@ app.ChordTypeSelector = Backbone.View.extend({
     el: "#chord_type",
 
     initialize: function () {
-	this.$el.find("input[value=M7]").click();
+	var that = this,
+	    types = ["M7", "7", "m7", "m7b5", "mM7", "dim"];
+	types.forEach(function (type) {
+	    var input, label;
+	    input = '<input type="radio" name="chord_type" value="' + type
+		+ '" id="select' + type + '">';
+	    label = '<label for="select' + type + '">' + type + '</label>';
+	    that.$el.append(input);
+	    that.$el.append(label);
+	});
+	that.$el.find("input[value=M7]").click();
 	app.tensionTypeSelector.activateTension("M7")
     },
     

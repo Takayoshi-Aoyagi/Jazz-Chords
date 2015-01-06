@@ -198,7 +198,39 @@ app.GoButton = Backbone.View.extend({
     }
 });
 
-app.GoButton = Backbone.View.extend({
+app.ScaleTypeSelector = Backbone.View.extend({
+
+    el: "#scale_type",
+
+    initialize: function () {
+	var that = this,
+	    types = ["Major", "Natural Minor", "Harmonic Minor", "HMP5", "Melodic Minor", "Altered", "Symmetric Diminished Scale"];
+	types.forEach(function (type) {
+	    var input, label;
+	    input = '<input type="radio" name="chord_type" value="' + type
+		+ '" id="select' + type + '">';
+	    label = '<label for="select' + type + '">' + type + '</label>';
+	    that.$el.append(input);
+	    that.$el.append(label);
+	});
+	that.$el.find("input[value=Major]").click();
+    },
+    
+    val: function () {
+	var dom = this.$el.children(":checked");
+	var val = dom.val();
+	return val;
+    },
+
+    events: {
+	"change": "onChange"
+    },
+
+    onChange: function (ev) {
+    }
+});
+
+app.ScaleGoButton = Backbone.View.extend({
 
     el: "#scale_go",
 
@@ -208,10 +240,42 @@ app.GoButton = Backbone.View.extend({
 
     onClick: function (ev) {
 	var root = app.scaleRootSelector.val(),
-	    tones = Scale.major(root),
-	    pos = Fingerboard.getPosMap(tones),
+	    tones,
+	    type,
+	    pos,
 	    data = [];
+
+	type = app.scaleTypeSelector.val();
+	switch (type) {
+	case "Major":
+	    tones = Scale.major(root);
+	    break;
+	case "Natural Minor":
+	    tones = Scale.naturalMinor(root);
+	    break;
+	case "Harmonic Minor":
+	    tones = Scale.harmonicMinor(root);
+	    break;
+	case "HMP5":
+	    tones = Scale.harmonicMinorPerfect5thBelow(root);
+	    break;
+	case "Melodic Minor":
+	    tones = Scale.melodicMinor(root);
+	    break;
+	case "Altered":
+	    tones = Scale.altered(root);
+	    break;
+	case "Symmetric Diminished Scale":
+	    tones = Scale.symmetricDiminished(root);
+	    break;
+	default:
+	    alert("Not supported [" + type + "]" );
+	    return;
+	}
+
 	// format pos
+	pos = Fingerboard.getPosMap(tones);
+
 	Object.keys(pos).sort().forEach(function (key) {
 	    var arr = pos[key];
 	    arr.unshift(key + "弦");
@@ -271,8 +335,9 @@ app.init = function () {
 
     // scale view
     app.scaleFb = new app.FletboardTable({el: "#scale_fletboard"});
+    app.scaleTypeSelector = new app.ScaleTypeSelector();
     app.scaleRootSelector = new app.RootSelector({el: "#scale_root"});
-    app.goButton = new app.GoButton();
+    app.goButton = new app.ScaleGoButton();
     
     // tabs
     app.tabsView = new app.TabsView();

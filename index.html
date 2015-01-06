@@ -1,7 +1,7 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>Jazz Guitar Chords</title>
+    <title>The Jazz Guitar</title>
     <link rel="stylesheet" href="./bower_components/datatables/media/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="./bower_components/jqueryui/themes/black-tie/jquery-ui.min.css
 ">
@@ -10,7 +10,7 @@
   <body>
     <div id="body">
       <div id="header" style="font-size: 80%">
-	<h1>Jazz Guitar</h1>
+	<h1>The Jazz Guitar</h1>
       </div>
 
       <div id="main">
@@ -31,7 +31,7 @@
 	    
 	    <div style="float:left">
 	      <!-- select root -->
-	      <div id="root" class="root_note" style="clear:both"></div>
+	      <div id="chord_root" class="root_note" style="clear:both"></div>
 	      <!-- select chord type -->
 	      <div id="chord_type" class="radio" style="clear:both; padding-top: 2px"></div>
 	      <!-- select tension type -->
@@ -51,12 +51,31 @@
 	    <div id="guitar" style="clear:both">
 	      <h3>Chord tones for guitar</h3>
 	      <div id="fletboard_view">
-		<table id="fletboard" class="cell-border" cellspacing="0" width="100%" style="font-size:70%"></table>
+		<table id="chord_fletboard" class="cell-border" cellspacing="0" width="100%" style="font-size:70%"></table>
 	      </div>
 	    </div>
 	  </div> <!-- end of chord_view -->
+	  
 	  <div id="scale_view">
+	    <div style="float:left">
+	      <!-- select root -->
+	      <div id="scale_root" class="root_note" style="clear:both"></div>
+
+	      <!-- GO button -->
+	      <div style="clear:both; padding-top: 2px">
+		<button id="scale_go" style="background-color:skyblue; width:65px">GO!</button>
+	      </div>
+
+	      <div id="guitar2" style="clear:both">
+		<h3>Chord tones for guitar</h3>
+		<div id="fletboard_view2">
+		  <table id="scale_fletboard" class="cell-border" cellspacing="0" width="100%" style="font-size:70%"></table>
+		</div>
+	      </div>
+
+	    </div>
 	  </div> <!-- end of scale_view -->
+	  
 	</div> <!-- end of tabs -->
       </div> <!-- end of main -->
       
@@ -71,11 +90,12 @@
     <script src="./js/utils.js"></script>
     <script src="./js/pitch.js"></script>
     <script src="./js/chord.js"></script>
+    <script src="./js/scale.js"></script>
     <script src="./js/fingerboard.js"></script>
     <script src="./app.js"></script>
     <script>
       $(document).ready(function () {
-        init();
+        app.init();
       });
     </script>
   </body>

@@ -13,20 +13,19 @@ app.TabsView = Backbone.View.extend({
 
 app.RootSelector = Backbone.View.extend({
 
-    el: "#root",
-
-    initialize: function () {
+    initialize: function (options) {
 	var that = this;
+	this.el = options.el;
 	Pitch.pitches.forEach(function (root, i) {
 	    var input, label;
 	    if (i == 0) {
-		input = '<input type="radio" name="root" value="' + root +
-		    '" id="select' + root + '" checked>';
+		input = '<input type="radio" name="' + options.el + '" value="' + root +
+		    '" id="select' + options.el + root + '" checked>';
 	    } else {
-		input = '<input type="radio" name="root" value="' + root +
-		    '" id="select' + root + '">';
+		input = '<input type="radio" name="' + options.el + '" value="' + root +
+		    '" id="select' + options.el + root + '">';
 	    }
-	    label = '<label for="select' + root + '">' + root + '</label>';
+	    label = '<label for="select' + options.el + root + '">' + root + '</label>';
 	    that.$el.append(input);
 	    that.$el.append(label);
 	});
@@ -165,7 +164,7 @@ app.GoButton = Backbone.View.extend({
     },
 
     onClick: function (ev) {
-	var root = app.rootSelector.val(),
+	var root = app.chordRootSelector.val(),
 	    chordType = app.chordTypeSelector.val(),
 	    tensionType = app.tensionTypeSelector.val(),
 	    data = [],
@@ -199,14 +198,36 @@ app.GoButton = Backbone.View.extend({
     }
 });
 
+app.GoButton = Backbone.View.extend({
+
+    el: "#scale_go",
+
+    events: {
+	"click": "onClick"
+    },
+
+    onClick: function (ev) {
+	var root = app.scaleRootSelector.val(),
+	    tones = Scale.major(root),
+	    pos = Fingerboard.getPosMap(tones),
+	    data = [];
+	// format pos
+	Object.keys(pos).sort().forEach(function (key) {
+	    var arr = pos[key];
+	    arr.unshift(key + "弦");
+	    data.push(arr);
+	});
+	app.scaleFb.draw(data);
+    }
+});
+
 app.FletboardTable = Backbone.View.extend({
 
-    el: "#fletboard",
-
-    initialize: function () {
+    initialize: function (options) {
 	var columns = [],
 	    i,
 	    title;
+	this.el = options.el;
 	columns.push({"title": " ", "width": "20px"});
 	for (i = 0; i < 13; i += 1) {
 	    title = {
@@ -240,11 +261,19 @@ app.FletboardTable = Backbone.View.extend({
 });
 
 
-function init () {
-    app.fb = new app.FletboardTable();
+app.init = function () {
+    // chord view
+    app.fb = new app.FletboardTable({el: "#chord_fletboard"});
     app.goButton = new app.GoButton();
     app.tensionTypeSelector = new app.TensionTypeSelector();
     app.chordTypeSelector = new app.ChordTypeSelector();
-    app.rootSelector = new app.RootSelector();
+    app.chordRootSelector = new app.RootSelector({el: "#chord_root"});
+
+    // scale view
+    app.scaleFb = new app.FletboardTable({el: "#scale_fletboard"});
+    app.scaleRootSelector = new app.RootSelector({el: "#scale_root"});
+    app.goButton = new app.GoButton();
+    
+    // tabs
     app.tabsView = new app.TabsView();
-}
+};

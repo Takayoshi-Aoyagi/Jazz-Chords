@@ -2,54 +2,67 @@
   <head>
     <meta charset="utf-8">
     <title>Jazz Guitar Chords</title>
-    <link rel="stylesheet" href="./css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="./bower_components/datatables/media/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="./bower_components/jqueryui/themes/black-tie/jquery-ui.min.css
+">
     <link rel="stylesheet" href="./css/default.css">
   </head>
   <body>
     <div id="body">
-      <div id="header">
-	<h1>Jazz Chords</h1>
+      <div id="header" style="font-size: 80%">
+	<h1>Jazz Guitar</h1>
       </div>
 
       <div id="main">
-	<div style="float:left">
-	  <div id="chord_name" style="width:150px; padding-top:5px; border-width:2px; border-style:solid; padding: 3px; margin: 5px;">
-	    <div id="root_name" style="float:left; font-size: 200%; height:50px; padding-left:10px;"></div>
-	    <div id="chord_type_name" style="height:50px;display:table-cell;text-align:center;vertical-align:bottom;"></div>
-	    <div id="tension_type_name" style="height:50px;display:table-cell;text-align:center;vertical-align:top;"></div>
-	  </div>
-	</div>
-	
-	<div style="float:left">
-	  <!-- select root -->
-	  <div id="root" class="root_note" style="clear:both"></div>
-	  <!-- select chord type -->
-	  <div id="chord_type" class="radio" style="clear:both; padding-top: 2px"></div>
-	  <!-- select tension type -->
-	  <div id="tension_type" class="radio" style="clear:both; padding-top: 2px"></div>
-	  <!-- display root checkbox -->
-	  <div style="clear:both">
-	    <input type="checkbox" id="display_root"> Display root
-	  </div>
-	  <!-- GO button -->
-	  <div style="clear:both; padding-top: 2px">
-	    <button id="go" style="background-color:skyblue; width:65px">GO!</button>
-	  </div>
-	</div>
+	<div id="tabs">
+	  <ul>
+	    <li><a href="#chord_view">Chord</a></li>
+	    <li><a href="#scale_view">Scale</a></li>
+	  </ul>
 
-	<hr style="clear:both; margin-bottom:10px; margin-top:10px;">
+	  <div id="chord_view">
+	    <div style="float:left">
+	      <div id="chord_name" style="width:150px; padding-top:5px; border-width:2px; border-style:solid; padding: 3px; margin: 5px;">
+		<div id="root_name" style="float:left; font-size: 200%; height:50px; padding-left:10px;"></div>
+		<div id="chord_type_name" style="height:50px;display:table-cell;text-align:center;vertical-align:bottom;"></div>
+		<div id="tension_type_name" style="height:50px;display:table-cell;text-align:center;vertical-align:top;"></div>
+	      </div>
+	    </div>
+	    
+	    <div style="float:left">
+	      <!-- select root -->
+	      <div id="root" class="root_note" style="clear:both"></div>
+	      <!-- select chord type -->
+	      <div id="chord_type" class="radio" style="clear:both; padding-top: 2px"></div>
+	      <!-- select tension type -->
+	      <div id="tension_type" class="radio" style="clear:both; padding-top: 2px"></div>
+	      <!-- display root checkbox -->
+	      <div style="clear:both">
+		<input type="checkbox" id="display_root"> Display root
+	      </div>
+	      <!-- GO button -->
+	      <div style="clear:both; padding-top: 2px">
+		<button id="go" style="background-color:skyblue; width:65px">GO!</button>
+	      </div>
+	    </div>
 
-	<div id="guitar" style="clear:both">
-	  <h3>Chord tones for guitar</h3>
-	  <div id="fletboard_view">
-	    <table id="fletboard" class="cell-border" cellspacing="0" width="100%" style="font-size:70%"></table>
-	  </div>
-	</div>
-      </div>
+	    <hr style="clear:both; margin-bottom:10px; margin-top:10px;">
+
+	    <div id="guitar" style="clear:both">
+	      <h3>Chord tones for guitar</h3>
+	      <div id="fletboard_view">
+		<table id="fletboard" class="cell-border" cellspacing="0" width="100%" style="font-size:70%"></table>
+	      </div>
+	    </div>
+	  </div> <!-- end of chord_view -->
+	  <div id="scale_view">
+	  </div> <!-- end of scale_view -->
+	</div> <!-- end of tabs -->
+      </div> <!-- end of main -->
       
       <div id="footer">
       </div>
-    </div>
+    </div> <!-- end of body -->
     <script src="./bower_components/underscore/underscore-min.js"></script>
     <script src="./bower_components/jquery/dist/jquery.min.js"></script>
     <script src="./bower_components/backbone/backbone.js"></script>

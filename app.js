@@ -2,6 +2,15 @@
 
 var app = app || {};
 
+app.TabsView = Backbone.View.extend({
+
+    el: "#tabs",
+
+    initialize: function () {
+	this.$el.tabs();
+    }
+});
+
 app.RootSelector = Backbone.View.extend({
 
     el: "#root",
@@ -230,10 +239,12 @@ app.FletboardTable = Backbone.View.extend({
     }
 });
 
+
 function init () {
     app.fb = new app.FletboardTable();
     app.goButton = new app.GoButton();
     app.tensionTypeSelector = new app.TensionTypeSelector();
     app.chordTypeSelector = new app.ChordTypeSelector();
     app.rootSelector = new app.RootSelector();
+    app.tabsView = new app.TabsView();
 }

@@ -207,7 +207,7 @@ app.ScaleTypeSelector = Backbone.View.extend({
 	    types = ["Major", "Natural Minor", "Harmonic Minor", "HMP5", "Melodic Minor", "Altered", "Symmetric Diminished Scale"];
 	types.forEach(function (type) {
 	    var input, label;
-	    input = '<input type="radio" name="chord_type" value="' + type
+	    input = '<input type="radio" name="scale_type" value="' + type
 		+ '" id="select' + type + '">';
 	    label = '<label for="select' + type + '">' + type + '</label>';
 	    that.$el.append(input);

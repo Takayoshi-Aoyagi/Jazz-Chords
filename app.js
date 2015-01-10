@@ -61,7 +61,7 @@ app.ChordTypeSelector = Backbone.View.extend({
 	    that.$el.append(label);
 	});
 	that.$el.find("input[value=M7]").click();
-	app.tensionTypeSelector.activateTension("M7")
+	app.tensionTypeSelector.activateTension("M7");
     },
     
     val: function () {
@@ -76,7 +76,7 @@ app.ChordTypeSelector = Backbone.View.extend({
 
     onChange: function (ev) {
 	var val = this.val();
-	app.tensionTypeSelector.activateTension(val)
+	app.tensionTypeSelector.activateTension(val);
     }
 });
 
@@ -204,7 +204,7 @@ app.ScaleTypeSelector = Backbone.View.extend({
 
     initialize: function () {
 	var that = this,
-	    types = ["Major", "Natural Minor", "Harmonic Minor", "HMP5", "Melodic Minor", "Altered", "Symmetric Diminished Scale"];
+	    types = ["Major", "Natural Minor", "Harmonic Minor", "HMP5", "Altered", "Melodic Minor", "Symmetric Diminished", "Lydian", "Lydian 7th", "Whole Tone"];
 	types.forEach(function (type) {
 	    var input, label;
 	    input = '<input type="radio" name="scale_type" value="' + type
@@ -265,8 +265,17 @@ app.ScaleGoButton = Backbone.View.extend({
 	case "Altered":
 	    tones = Scale.altered(root);
 	    break;
-	case "Symmetric Diminished Scale":
+	case "Symmetric Diminished":
 	    tones = Scale.symmetricDiminished(root);
+	    break;
+	case "Lydian":
+	    tones = Scale.lydian(root);
+	    break;
+	case "Lydian 7th":
+	    tones = Scale.lydian7th(root);
+	    break;
+	case "Whole Tone":
+	    tones = Scale.wholeTone(root);
 	    break;
 	default:
 	    alert("Not supported [" + type + "]" );
@@ -341,4 +350,5 @@ app.init = function () {
     
     // tabs
     app.tabsView = new app.TabsView();
+
 };

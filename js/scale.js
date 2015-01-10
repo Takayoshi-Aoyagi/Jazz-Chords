@@ -94,6 +94,44 @@ Scale.symmetricDiminished = function (root) {
     return Scale.getData(root, degrees);
 };
 
+Scale.lydian = function (root) {
+    var degrees = [
+	["1", 0],
+	["2", 2],
+	["3", 4],
+	["#4", 6],
+	["5", 7],
+	["6", 9],
+	["7", 11]
+    ];
+    return Scale.getData(root, degrees);
+};
+
+Scale.lydian7th = function (root) {
+    var degrees = [
+	["1", 0],
+	["2", 2],
+	["3", 4],
+	["#4", 6],
+	["5", 7],
+	["6", 9],
+	["b7", 10]
+    ];
+    return Scale.getData(root, degrees);
+};
+
+Scale.wholeTone = function (root) {
+    var degrees = [
+	["1", 0],
+	["2", 2],
+	["3", 4],
+	["#4", 6],
+	["#5", 8],
+	["b7", 10]
+    ];
+    return Scale.getData(root, degrees);
+};
+
 Scale.getData = function (root, degrees) {
     var dic = {};
     degrees.forEach(function (degree) {

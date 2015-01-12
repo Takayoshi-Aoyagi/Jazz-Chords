@@ -13,14 +13,27 @@ var KeyView = Backbone.View.extend({
 	    this.height = 180;
 	} else {
 	    this.$el.addClass('w3');
+	    this.height = 120;
 	}
 	this.render();
     },
 
     render: function () {
-	var div = sprintf('<div style="width:500px;height:%spx;display:table-cell;text-align:center;vertical-align:bottom;margin:10px;">%s</div>',this.height,  this.key);
+	var div = sprintf('<div style="width:100px;height:%spx;display:table-cell;text-align:center;vertical-align:bottom;margin:10px;">%s</div>',this.height,  this.key);
 	this.$el.append(div);
 	return this;
+    },
+
+    hide: function () {
+	this.$el.children().hide();
+	this.degree = "";
+    },
+
+    setDegree: function (degree) {
+	this.degree = degree;
+	var child = this.$el.children().first();;
+	child.text("");
+	child.append(this.key + "<BR>(" + degree + ")");
     }
 });
 
@@ -63,8 +76,25 @@ var PianoView = Backbone.View.extend({
 	    that.$el.append(keyView.$el);
 	}
 	that.$el.append('<div style="clear: both;"></div)');
+    },
+
+    update: function (tones) {
+	var exists = Object.keys(tones);
+	app.pianoKeys.forEach(function (keyView) {
+	    var key = keyView.key;
+	    if (exists.indexOf(key) < 0) {
+		keyView.hide();
+	    } else {
+		var degree = tones[key];
+		keyView.setDegree(degree);
+	    }
+	});
     }
 });
 
 
 var pv = new PianoView();
+//var eb = Scale.symmetricDiminished("C");
+//var eb = Chord.parse("C7", ["#9", "b13"], true);
+var eb = Chord.parse("C7", ["#11"], true);
+pv.update(eb);

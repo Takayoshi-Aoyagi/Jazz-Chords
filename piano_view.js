@@ -30,6 +30,10 @@ app.KeyView = Backbone.View.extend({
 	this.degree = "";
     },
 
+    show: function () {
+	this.$el.children().show();
+    },
+
     setDegree: function (degree) {
 	this.degree = degree;
 	var child = this.$el.children().first();;
@@ -48,7 +52,7 @@ app.PianoView = Backbone.View.extend({
 	    whiteTones = ["C", "D", "E", "F", "G", "A", "B"],
 	    bCount = 0;
 
-	app.pianoKeys = [];
+	this.pianoKeys = [];
 
 	<!-- black keys -->
 	for (i = 0; i < 2; i++) {
@@ -57,7 +61,7 @@ app.PianoView = Backbone.View.extend({
 		if (divType == "b") {
 		    key = blackTones[bCount % 5];
 		    keyView = new app.KeyView({key: key});
-		    app.pianoKeys.push(keyView);
+		    that.pianoKeys.push(keyView);
 		    that.$el.append(keyView.$el);
 		    bCount++;
 		} else {
@@ -71,7 +75,7 @@ app.PianoView = Backbone.View.extend({
 	for (i = 0; i < 14; i++) {
 	    key = whiteTones[i % 7];
 	    keyView = new app.KeyView({key: key});
-	    app.pianoKeys.push(keyView);
+	    this.pianoKeys.push(keyView);
 	    that.$el.append(keyView.$el);
 	}
 	that.$el.append('<div style="clear: both;"></div)');
@@ -79,13 +83,14 @@ app.PianoView = Backbone.View.extend({
 
     update: function (tones) {
 	var exists = Object.keys(tones);
-	app.pianoKeys.forEach(function (keyView) {
+	this.pianoKeys.forEach(function (keyView) {
 	    var key = keyView.key;
 	    if (exists.indexOf(key) < 0) {
 		keyView.hide();
 	    } else {
 		var degree = tones[key];
 		keyView.setDegree(degree);
+		keyView.show();
 	    }
 	});
     },

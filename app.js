@@ -155,7 +155,7 @@ app.TensionTypeSelector = Backbone.View.extend({
     }
 });
 
-app.GoButton = Backbone.View.extend({
+app.ChordGoButton = Backbone.View.extend({
 
     el: "#go",
 
@@ -184,11 +184,9 @@ app.GoButton = Backbone.View.extend({
 	
 	tensions = tensionType.split(" ");
 	tones = Chord.parse(root + chordType, tensions, displayRoot);
-	pos = Fingerboard.getPosMap(tones);
-    
-	console.log(pos);
 
-	// format pos
+	// for guitar
+	pos = Fingerboard.getPosMap(tones);
 	Object.keys(pos).sort().forEach(function (key) {
 	    var arr = pos[key];
 	    arr.unshift(key + "弦");
@@ -198,6 +196,9 @@ app.GoButton = Backbone.View.extend({
 	if (app.instrumentType != "guitar") {
 	    app.guitarChordView.hide();
 	}
+
+	// for piano
+	app.pianoChordView.update(tones);
     }
 });
 
@@ -389,7 +390,7 @@ app.init = function () {
 
     // chord view
     app.fb = new app.FletboardTable({el: "#chord_fletboard"});
-    app.goButton = new app.GoButton();
+    app.chordGoButton = new app.ChordGoButton();
     app.tensionTypeSelector = new app.TensionTypeSelector();
     app.chordTypeSelector = new app.ChordTypeSelector();
     app.chordRootSelector = new app.RootSelector({el: "#chord_root"});
@@ -400,7 +401,7 @@ app.init = function () {
     app.scaleFb = new app.FletboardTable({el: "#scale_fletboard"});
     app.scaleTypeSelector = new app.ScaleTypeSelector();
     app.scaleRootSelector = new app.RootSelector({el: "#scale_root"});
-    app.goButton = new app.ScaleGoButton();
+    app.scaleGoButton = new app.ScaleGoButton();
     app.pianoScaleView = new app.PianoView({el: "#piano_scale_view"});
     app.guitarScaleView = new app.GuitarView({el: "#guitar_scale_view"});
 

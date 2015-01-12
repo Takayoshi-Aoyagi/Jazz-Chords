@@ -1,7 +1,7 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>The Jazz Guitar</title>
+    <title>The Jazz Chords and Scales</title>
     <link rel="stylesheet" href="./bower_components/datatables/media/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="./bower_components/jqueryui/themes/black-tie/jquery-ui.min.css
 ">
@@ -9,9 +9,12 @@
   </head>
   <body>
     <div id="body">
-      <div id="header" style="font-size: 80%">
-	<h1>The Jazz Guitar</h1>
+      <div id="header" style="font-size:80%; float:left">
+	<h1>The Jazz Chords and Scales</h1>
       </div>
+
+      <!-- Piano or Guitar -->
+      <div id="instrument_selector"></div>
 
       <div id="main">
 	<div id="tabs">
@@ -48,12 +51,15 @@
 
 	    <hr style="clear:both; margin-bottom:10px; margin-top:10px;">
 
-	    <div id="guitar" style="clear:both">
-	      <h3>Chord tones for guitar</h3>
+	    <!-- guitar -->
+	    <div id="guitar_chord_view" style="clear:both">
 	      <div id="fletboard_view">
 		<table id="chord_fletboard" class="cell-border" cellspacing="0" width="100%" style="font-size:70%"></table>
 	      </div>
 	    </div>
+
+	    <!-- piano -->
+	    <div id="piano_chord_view" style="clear:both;"></div>
 	  </div> <!-- end of chord_view -->
 	  
 	  <div id="scale_view">
@@ -67,13 +73,13 @@
 		<button id="scale_go" style="background-color:skyblue; width:65px">GO!</button>
 	      </div>
 
-	      <div id="guitar2" style="clear:both">
-		<h3>Chord tones for guitar</h3>
+	      <div id="guitar_scale_view" style="clear:both">
 		<div id="fletboard_view2">
 		  <table id="scale_fletboard" class="cell-border" cellspacing="0" width="100%" style="font-size:70%"></table>
 		</div>
 	      </div>
 
+	    <div id="piano_scale_view" style="clear:both;"></div>
 	    </div>
 	  </div> <!-- end of scale_view -->
 	  
@@ -83,6 +89,7 @@
       <div id="footer">
       </div>
     </div> <!-- end of body -->
+    <script src="./bower_components/sprintf/dist/sprintf.min.js"></script>
     <script src="./bower_components/underscore/underscore-min.js"></script>
     <script src="./bower_components/jquery/dist/jquery.min.js"></script>
     <script src="./bower_components/backbone/backbone.js"></script>
@@ -93,6 +100,7 @@
     <script src="./js/chord.js"></script>
     <script src="./js/scale.js"></script>
     <script src="./js/fingerboard.js"></script>
+    <script src="./piano_view.js"></script>
     <script src="./app.js"></script>
     <script>
       $(document).ready(function () {

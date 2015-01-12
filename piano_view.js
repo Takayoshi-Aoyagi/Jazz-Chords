@@ -1,7 +1,8 @@
 "use strict";
 
 var app = app || {};
-var KeyView = Backbone.View.extend({
+
+app.KeyView = Backbone.View.extend({
     
     tagName: 'div',
 
@@ -10,10 +11,10 @@ var KeyView = Backbone.View.extend({
 
 	if (this.key.indexOf('b') > 0) {
 	    this.$el.addClass('b');
-	    this.height = 180;
+	    this.height = 90;
 	} else {
 	    this.$el.addClass('w3');
-	    this.height = 120;
+	    this.height = 70;
 	}
 	this.render();
     },
@@ -37,10 +38,8 @@ var KeyView = Backbone.View.extend({
     }
 });
 
-var PianoView = Backbone.View.extend({
+app.PianoView = Backbone.View.extend({
     
-    el: '#piano_view',
-
     initialize: function () {
 	var that = this,
 	    i, key, keyView,
@@ -57,7 +56,7 @@ var PianoView = Backbone.View.extend({
 		var div;
 		if (divType == "b") {
 		    key = blackTones[bCount % 5];
-		    keyView = new KeyView({key: key});
+		    keyView = new app.KeyView({key: key});
 		    app.pianoKeys.push(keyView);
 		    that.$el.append(keyView.$el);
 		    bCount++;
@@ -71,7 +70,7 @@ var PianoView = Backbone.View.extend({
 	<!-- white keys -->
 	for (i = 0; i < 14; i++) {
 	    key = whiteTones[i % 7];
-	    keyView = new KeyView({key: key});
+	    keyView = new app.KeyView({key: key});
 	    app.pianoKeys.push(keyView);
 	    that.$el.append(keyView.$el);
 	}
@@ -89,12 +88,13 @@ var PianoView = Backbone.View.extend({
 		keyView.setDegree(degree);
 	    }
 	});
+    },
+
+    hide: function () {
+	this.$el.hide();
+    },
+
+    show: function () {
+	this.$el.show();
     }
 });
-
-
-var pv = new PianoView();
-//var eb = Scale.symmetricDiminished("C");
-//var eb = Chord.parse("C7", ["#9", "b13"], true);
-var eb = Chord.parse("C7", ["#11"], true);
-pv.update(eb);

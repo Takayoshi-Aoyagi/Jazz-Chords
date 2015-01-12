@@ -195,6 +195,9 @@ app.GoButton = Backbone.View.extend({
 	    data.push(arr);
 	});
 	app.fb.draw(data);
+	if (app.instrumentType != "guitar") {
+	    app.guitarChordView.hide();
+	}
     }
 });
 
@@ -291,6 +294,9 @@ app.ScaleGoButton = Backbone.View.extend({
 	    data.push(arr);
 	});
 	app.scaleFb.draw(data);
+	if (app.instrumentType != "guitar") {
+	    app.guitarScaleView.hide();
+	}
     }
 });
 
@@ -333,22 +339,78 @@ app.FletboardTable = Backbone.View.extend({
     }
 });
 
+app.InstrumentSelectorView = Backbone.View.extend({
+
+    el: '#instrument_selector',
+
+    initialize: function () {
+	var that = this;
+	this.instruments = ['guitar', 'piano'];
+	this.instruments.forEach(function (instrument) {
+	    var img = sprintf('<img src="./img/%s.png" name="%s" height=60px width=60px>', instrument, instrument);
+	    that.$el.append(img);
+	});
+    },
+
+    events: {
+	"click": "onClick"
+    },
+
+    onClick: function (ev, a, b) {
+	app.instrumentType = ev.target.name;
+	if (app.instrumentType === "guitar") {
+	    app.pianoChordView.hide();
+	    app.guitarChordView.show();
+	    app.guitarScaleView.show();
+	} else {
+	    app.guitarChordView.hide();
+	    app.guitarScaleView.hide();
+	    app.pianoChordView.show();
+	}
+    }
+});
+
+app.GuitarView = Backbone.View.extend({
+
+    initialize: function (option) {
+	
+    },
+
+    show: function () {
+	this.$el.show();
+    },
+
+    hide: function () {
+	this.$el.hide();
+    }
+});
 
 app.init = function () {
+
     // chord view
     app.fb = new app.FletboardTable({el: "#chord_fletboard"});
     app.goButton = new app.GoButton();
     app.tensionTypeSelector = new app.TensionTypeSelector();
     app.chordTypeSelector = new app.ChordTypeSelector();
     app.chordRootSelector = new app.RootSelector({el: "#chord_root"});
+    app.pianoChordView = new app.PianoView({el: "#piano_chord_view"});
+    app.guitarChordView = new app.GuitarView({el: "#guitar_chord_view"});
 
     // scale view
     app.scaleFb = new app.FletboardTable({el: "#scale_fletboard"});
     app.scaleTypeSelector = new app.ScaleTypeSelector();
     app.scaleRootSelector = new app.RootSelector({el: "#scale_root"});
     app.goButton = new app.ScaleGoButton();
-    
+    app.pianoScaleView = new app.PianoView({el: "#piano_scale_view"});
+    app.guitarScaleView = new app.GuitarView({el: "#guitar_scale_view"});
+
+    // instrument selector
+    app.instrumentSelectorView = new app.InstrumentSelectorView();
     // tabs
     app.tabsView = new app.TabsView();
 
+    // push button
+    app.guitarChordView.hide();
+    app.guitarScaleView.hide();
+    app.pianoChordView.show();
 };

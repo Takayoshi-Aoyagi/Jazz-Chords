@@ -195,6 +195,8 @@ app.ChordGoButton = Backbone.View.extend({
 	app.fb.draw(data);
 	if (app.instrumentType != "guitar") {
 	    app.guitarChordView.hide();
+	} else {
+	    app.pianoChordView.hide();
 	}
 
 	// for piano
@@ -286,9 +288,8 @@ app.ScaleGoButton = Backbone.View.extend({
 	    return;
 	}
 
-	// format pos
+	// for guitar
 	pos = Fingerboard.getPosMap(tones);
-
 	Object.keys(pos).sort().forEach(function (key) {
 	    var arr = pos[key];
 	    arr.unshift(key + "弦");
@@ -298,6 +299,9 @@ app.ScaleGoButton = Backbone.View.extend({
 	if (app.instrumentType != "guitar") {
 	    app.guitarScaleView.hide();
 	}
+
+	// for piano
+	app.pianoScaleView.update(tones);
     }
 });
 
@@ -360,13 +364,15 @@ app.InstrumentSelectorView = Backbone.View.extend({
     onClick: function (ev, a, b) {
 	app.instrumentType = ev.target.name;
 	if (app.instrumentType === "guitar") {
-	    app.pianoChordView.hide();
 	    app.guitarChordView.show();
 	    app.guitarScaleView.show();
+	    app.pianoChordView.hide();
+	    app.pianoScaleView.hide();
 	} else {
 	    app.guitarChordView.hide();
 	    app.guitarScaleView.hide();
 	    app.pianoChordView.show();
+	    app.pianoScaleView.show();
 	}
     }
 });

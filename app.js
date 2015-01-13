@@ -135,7 +135,6 @@ app.TensionTypeSelector = Backbone.View.extend({
 
     onChange: function (ev) {
 	var val = this.val();
-	console.log(val);
 	switch (val) {
 	case "":
 	    break;
@@ -364,10 +363,10 @@ app.InstrumentSelectorView = Backbone.View.extend({
     onClick: function (ev, a, b) {
 	app.instrumentType = ev.target.name;
 	if (app.instrumentType === "guitar") {
-	    app.guitarChordView.show();
-	    app.guitarScaleView.show();
 	    app.pianoChordView.hide();
 	    app.pianoScaleView.hide();
+	    app.guitarChordView.show();
+	    app.guitarScaleView.show();
 	} else {
 	    app.guitarChordView.hide();
 	    app.guitarScaleView.hide();
@@ -413,6 +412,7 @@ app.init = function () {
 
     // instrument selector
     app.instrumentSelectorView = new app.InstrumentSelectorView();
+
     // tabs
     app.tabsView = new app.TabsView();
 

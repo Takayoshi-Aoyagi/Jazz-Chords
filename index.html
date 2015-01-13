@@ -24,31 +24,36 @@
 	  </ul>
 
 	  <div id="chord_view">
-	    <div style="float:left">
-	      <div id="chord_name" style="width:150px; padding-top:5px; border-width:2px; border-style:solid; padding: 3px; margin: 5px;">
-		<div id="root_name" style="float:left; font-size: 200%; height:50px; padding-left:10px;"></div>
-		<div id="chord_type_name" style="height:50px;display:table-cell;text-align:center;vertical-align:bottom;"></div>
-		<div id="tension_type_name" style="height:50px;display:table-cell;text-align:center;vertical-align:top;"></div>
+	    <div style="height:120px">
+	      <div style="float:left">
+		<!-- select root -->
+		<div id="chord_root" class="root_note" style="clear:both"></div>
+		<!-- select chord type -->
+		<div id="chord_type" class="radio" style="clear:both; padding-top: 2px"></div>
+		<!-- select tension type -->
+		<div id="tension_type" class="radio" style="clear:both; padding-top: 2px"></div>
+		<div style="clear:both">
+		  <!-- GO button -->
+		  <div style="padding-top: 2px; float:left">
+		    <button id="go" style="background-color:skyblue; width:65px">GO!</button>
+		  </div>
+		  <!-- display root checkbox -->
+		  <div style="float:left;">
+		    <input type="checkbox" id="display_root"> Display root</input>
+		  </div>
+		  <div style="clear:both"></div>
+		</div>
+	      </div>
+
+	      <div style="float:left">
+		<div id="chord_name" style="width:150px; padding-top:5px; border-width:2px; border-style:solid; padding: 3px; margin: 5px;">
+		  <div id="root_name" style="float:left; font-size: 200%; height:50px; padding-left:10px;"></div>
+		  <div id="chord_type_name" style="height:50px;display:table-cell;text-align:center;vertical-align:bottom;"></div>
+		  <div id="tension_type_name" style="height:50px;display:table-cell;text-align:center;vertical-align:top;"></div>
+		</div>
 	      </div>
 	    </div>
 	    
-	    <div style="float:left">
-	      <!-- select root -->
-	      <div id="chord_root" class="root_note" style="clear:both"></div>
-	      <!-- select chord type -->
-	      <div id="chord_type" class="radio" style="clear:both; padding-top: 2px"></div>
-	      <!-- select tension type -->
-	      <div id="tension_type" class="radio" style="clear:both; padding-top: 2px"></div>
-	      <!-- display root checkbox -->
-	      <div style="clear:both">
-		<input type="checkbox" id="display_root"> Display root
-	      </div>
-	      <!-- GO button -->
-	      <div style="clear:both; padding-top: 2px">
-		<button id="go" style="background-color:skyblue; width:65px">GO!</button>
-	      </div>
-	    </div>
-
 	    <hr style="clear:both; margin-bottom:10px; margin-top:10px;">
 
 	    <!-- guitar -->
@@ -64,15 +69,19 @@
 	  
 	  <div id="scale_view">
 	    <div>
-	      <!-- select root -->
-	      <div id="scale_root" class="root_note" style="clear:both"></div>
-	      <div id="scale_type" class="scale_type" style="clear:both; padding-top:3px"></div>
+	      <div style="height:120px;">
+		<!-- select root -->
+		<div id="scale_root" class="root_note" style="clear:both"></div>
+		<div id="scale_type" class="scale_type" style="clear:both; padding-top:3px"></div>
 
-	      <!-- GO button -->
-	      <div style="clear:both; padding-top: 2px">
-		<button id="scale_go" style="background-color:skyblue; width:65px">GO!</button>
+		<!-- GO button -->
+		<div style="clear:both; padding-top: 2px">
+		  <button id="scale_go" style="background-color:skyblue; width:65px">GO!</button>
+		</div>
 	      </div>
-
+	      
+	      <hr style="clear:both; margin-bottom:10px; margin-top:10px;">
+	      
 	      <div id="guitar_scale_view" style="clear:both">
 		<div id="fletboard_view2">
 		  <table id="scale_fletboard" class="cell-border" cellspacing="0" width="100%" style="font-size:70%"></table>

@@ -100,7 +100,13 @@ Chord.parse = function (chord, tensions, displayRoot) {
     // omit 5th when tension contains 13th
     if (tensions.indexOf("13") >= 0 || tensions.indexOf("b13") >= 0) {
         delete dic[_5thPitch];
-    }	
+    }
+
+    // omit 5th when tension contains #11th
+    if (tensions.indexOf("#11") >= 0) {
+	delete dic[_5thPitch];
+    }
+    
     return dic;
 };
 

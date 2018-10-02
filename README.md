@@ -9,4 +9,3 @@ Piano View and Guitar View are available.
 * Demo
 
 [Demo site](http://takayoshi-aoyagi.github.io/Jazz-Chords/)
-

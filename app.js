@@ -114,6 +114,8 @@ app.TensionTypeSelector = Backbone.View.extend({
 	    break;
 	case 'm7':
 	    tensions.push("9");
+	    tensions.push("11");
+	    tensions.push("9 11");
 	    break;
 	case 'm7b5':
 	    tensions.push("11");
@@ -143,6 +145,8 @@ app.TensionTypeSelector = Backbone.View.extend({
 	case "":
 	    break;
 	case "9":
+	    break;
+	case "9 11":
 	    break;
 	case "9 13":
 	    break;
@@ -221,7 +225,7 @@ app.ScaleTypeSelector = Backbone.View.extend({
 
     initialize: function () {
 	var that = this,
-	    types = ["Major", "Natural Minor", "Harmonic Minor", "HMP5", "Altered", "Melodic Minor", "Symmetric Diminished", "Lydian", "Lydian 7th", "Whole Tone"];
+	    types = ["Major", "Natural Minor", "Harmonic Minor", "HMP5↓", "Altered", "Melodic Minor", "Symmetric Diminished", "Lydian", "Lydian 7th", "Whole Tone"];
 	types.forEach(function (type) {
 	    var input, label;
 	    input = '<input type="radio" name="scale_type" value="' + type
@@ -273,7 +277,7 @@ app.ScaleGoButton = Backbone.View.extend({
 	case "Harmonic Minor":
 	    tones = Scale.harmonicMinor(root);
 	    break;
-	case "HMP5":
+	case "HMP5↓":
 	    tones = Scale.harmonicMinorPerfect5thBelow(root);
 	    break;
 	case "Melodic Minor":

@@ -1,3 +1,4 @@
+
 "use strict";
 
 var Scale = function () {};
@@ -5,11 +6,11 @@ var Scale = function () {};
 Scale.major = function (root) {
     var degrees = [
 	["1", 0],
-	["2", 2],
+	["9", 2],
 	["3", 4],
-	["4", 5],
+	["11", 5],
 	["5", 7],
-	["6", 9],
+	["13", 9],
 	["7", 11]
     ];
     return Scale.getData(root, degrees);
@@ -18,10 +19,10 @@ Scale.major = function (root) {
 Scale.naturalMinor = function (root) {
     var degrees = [
 	["1", 0],
-	["2", 2],
+	["9", 2],
 	["b3", 3],
-	["4", 5],
-	["5", 7],
+	["11", 5],
+	["P5", 7],
 	["b6", 8],
 	["b7", 10]
     ];
@@ -31,11 +32,11 @@ Scale.naturalMinor = function (root) {
 Scale.melodicMinor = function (root) {
     var degrees = [
 	["1", 0],
-	["2", 2],
+	["9", 2],
 	["b3", 3],
-	["4", 5],
-	["5", 7],
-	["6", 9],
+	["11", 5],
+	["P5", 7],
+	["13", 9],
 	["7", 11]
     ];
     return Scale.getData(root, degrees);
@@ -44,12 +45,12 @@ Scale.melodicMinor = function (root) {
 Scale.harmonicMinor = function (root) {
     var degrees = [
 	["1", 0],
-	["2", 2],
+	["9", 2],
 	["b3", 3],
-	["4", 5],
-	["5", 7],
+	["11", 5],
+	["P5", 7],
 	["b6", 8],
-	["b7", 11]
+	["7", 11]
     ];
     return Scale.getData(root, degrees);
 };
@@ -57,10 +58,10 @@ Scale.harmonicMinor = function (root) {
 Scale.harmonicMinorPerfect5thBelow = function (root) {
     var degrees = [
 	["1", 0],
-	["b2", 1],
+	["b9", 1],
 	["3", 4],
-	["4", 5],
-	["5", 7],
+	["11", 5],
+	["P5", 7],
 	["b6", 8],
 	["b7", 10]
     ];
@@ -70,11 +71,11 @@ Scale.harmonicMinorPerfect5thBelow = function (root) {
 Scale.altered = function (root) {
     var degrees = [
 	["1", 0],
-	["b2", 1],
-	["b3", 3],
+	["b9", 1],
+	["#9", 3],
 	["3", 4],
-	["b5", 6],
-	["b6", 8],
+	["#11", 6],
+	["b13", 8],
 	["b7", 10]
     ];
     return Scale.getData(root, degrees);
@@ -83,12 +84,12 @@ Scale.altered = function (root) {
 Scale.symmetricDiminished = function (root) {
     var degrees = [
 	["1", 0],
-	["b2", 1],
+	["b9", 1],
 	["b3", 3],
 	["3", 4],
-	["b5", 6],
-	["5", 7],
-	["6", 9],
+	["#11", 6],
+	["P5", 7],
+	["13", 9],
 	["b7", 10]
     ];
     return Scale.getData(root, degrees);
@@ -97,11 +98,11 @@ Scale.symmetricDiminished = function (root) {
 Scale.lydian = function (root) {
     var degrees = [
 	["1", 0],
-	["2", 2],
+	["9", 2],
 	["3", 4],
-	["#4", 6],
-	["5", 7],
-	["6", 9],
+	["#11", 6],
+	["P5", 7],
+	["13", 9],
 	["7", 11]
     ];
     return Scale.getData(root, degrees);
@@ -110,11 +111,11 @@ Scale.lydian = function (root) {
 Scale.lydian7th = function (root) {
     var degrees = [
 	["1", 0],
-	["2", 2],
+	["9", 2],
 	["3", 4],
-	["#4", 6],
-	["5", 7],
-	["6", 9],
+	["#11", 6],
+	["P5", 7],
+	["13", 9],
 	["b7", 10]
     ];
     return Scale.getData(root, degrees);
@@ -123,10 +124,10 @@ Scale.lydian7th = function (root) {
 Scale.wholeTone = function (root) {
     var degrees = [
 	["1", 0],
-	["2", 2],
+	["9", 2],
 	["3", 4],
-	["#4", 6],
-	["#5", 8],
+	["#11", 6],
+	["b13", 8],
 	["b7", 10]
     ];
     return Scale.getData(root, degrees);

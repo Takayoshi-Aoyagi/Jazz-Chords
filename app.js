@@ -217,7 +217,7 @@ var app = app || {};
 	    });
 	    app.fb.draw(data);
 	    if (app.instrumentType != "guitar") {
-		app.guitarChordView.hide();
+		guitarChordView.visible(false);
 	    } else {
 		app.pianoChordView.hide();
 	    }
@@ -389,10 +389,10 @@ var app = app || {};
 	    if (app.instrumentType === "guitar") {
 		app.pianoChordView.hide();
 		app.pianoScaleView.hide();
-		app.guitarChordView.show();
+		guitarChordView.visible(true);
 		app.guitarScaleView.show();
 	    } else {
-		app.guitarChordView.hide();
+		guitarChordView.visible(false);
 		app.guitarScaleView.hide();
 		app.pianoChordView.show();
 		app.pianoScaleView.show();
@@ -424,7 +424,6 @@ var app = app || {};
 	app.chordTypeSelector = new app.ChordTypeSelector();
 	app.chordRootSelector = new app.RootSelector({el: "#chord_root"});
 	app.pianoChordView = new app.PianoView({el: "#piano_chord_view"});
-	app.guitarChordView = new app.GuitarView({el: "#guitar_chord_view"});
 
 	// scale view
 	app.scaleFb = new app.FletboardTable({el: "#scale_fletboard"});
@@ -441,7 +440,7 @@ var app = app || {};
 	app.tabsView = new app.TabsView();
 
 	// push button
-	app.guitarChordView.hide();
+	guitarChordView.visible(false);
 	app.guitarScaleView.hide();
 	app.pianoChordView.show();
     };
@@ -449,6 +448,18 @@ var app = app || {};
     
     // Vue.js //
 
+    const guitarChordView = new Vue({
+	el: "#guitar_chord_view",
+	data: {
+	    show: false
+	},
+	methods: {
+	    visible: function (flag) {
+		this.show = flag
+	    }
+	}
+    });
+    
     const chordNameView = new Vue({
 	el: "#chord_name",
 	data: {

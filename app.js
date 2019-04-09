@@ -225,7 +225,11 @@ app.ScaleTypeSelector = Backbone.View.extend({
 
     initialize: function () {
 	var that = this,
-	    types = ["Major", "Natural Minor", "Harmonic Minor", "HMP5↓", "Altered", "Melodic Minor", "Symmetric Diminished", "Lydian", "Lydian 7th", "Whole Tone"];
+	    types = [
+		"Ionian (Major)", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian (N. Minor)", "Locrian",
+		"Harmonic Minor", "Melodic Minor",  "Altered", "Lydian b7th", "HMP5↓",
+		"Symmetric Diminished", "Whole Tone"
+	    ];
 	types.forEach(function (type) {
 	    var input, label;
 	    input = '<input type="radio" name="scale_type" value="' + type
@@ -268,11 +272,26 @@ app.ScaleGoButton = Backbone.View.extend({
 
 	type = app.scaleTypeSelector.val();
 	switch (type) {
-	case "Major":
-	    tones = Scale.major(root);
+	case "Ionian (Major)":
+	    tones = Scale.ionian(root);
 	    break;
-	case "Natural Minor":
-	    tones = Scale.naturalMinor(root);
+	case "Dorian":
+	    tones = Scale.dorian(root);
+	    break;
+	case "Phrygian":
+	    tones = Scale.phrygian(root);
+	    break;
+	case "Lydian":
+	    tones = Scale.lydian(root);
+	    break;
+	case "Mixolydian":
+	    tones = Scale.mixolydian(root);
+	    break;
+	case "Aeolian (N. Minor)":
+	    tones = Scale.aeolian(root);
+	    break;
+	case "Locrian":
+	    tones = Scale.locrian(root);
 	    break;
 	case "Harmonic Minor":
 	    tones = Scale.harmonicMinor(root);
@@ -288,9 +307,6 @@ app.ScaleGoButton = Backbone.View.extend({
 	    break;
 	case "Symmetric Diminished":
 	    tones = Scale.symmetricDiminished(root);
-	    break;
-	case "Lydian":
-	    tones = Scale.lydian(root);
 	    break;
 	case "Lydian 7th":
 	    tones = Scale.lydian7th(root);

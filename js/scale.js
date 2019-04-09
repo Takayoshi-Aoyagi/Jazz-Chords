@@ -3,7 +3,7 @@
 
 var Scale = function () {};
 
-Scale.major = function (root) {
+Scale.ionian = function (root) {
     var degrees = [
 	["1", 0],
 	["9", 2],
@@ -16,14 +16,79 @@ Scale.major = function (root) {
     return Scale.getData(root, degrees);
 };
 
-Scale.naturalMinor = function (root) {
+Scale.dorian = function (root) {
     var degrees = [
 	["1", 0],
 	["9", 2],
 	["b3", 3],
 	["11", 5],
 	["P5", 7],
-	["b6", 8],
+	["13", 9],
+	["b7", 10]
+    ];
+    return Scale.getData(root, degrees);
+};
+
+Scale.phrygian = function (root) {
+    var degrees = [
+	["1", 0],
+	["b9", 1],
+	["b3", 3],
+	["11", 5],
+	["P5", 7],
+	["b13", 8],
+	["b7", 10]
+    ];
+    return Scale.getData(root, degrees);
+};
+
+Scale.lydian = function (root) {
+    var degrees = [
+	["1", 0],
+	["9", 2],
+	["3", 4],
+	["#11", 6],
+	["P5", 7],
+	["13", 9],
+	["7", 11]
+    ];
+    return Scale.getData(root, degrees);
+};
+
+Scale.mixolydian = function (root) {
+    var degrees = [
+	["1", 0],
+	["9", 2],
+	["3", 4],
+	["11", 5],
+	["P5", 7],
+	["13", 9],
+	["b7", 10]
+    ];
+    return Scale.getData(root, degrees);
+};
+
+Scale.aeolian = function (root) {
+    var degrees = [
+	["1", 0],
+	["9", 2],
+	["b3", 3],
+	["11", 5],
+	["P5", 7],
+	["b13", 8],
+	["b7", 10]
+    ];
+    return Scale.getData(root, degrees);
+};
+
+Scale.locrian = function (root) {
+    var degrees = [
+	["1", 0],
+	["b9", 1],
+	["b3", 3],
+	["11", 5],
+	["b5", 6],
+	["b13", 8],
 	["b7", 10]
     ];
     return Scale.getData(root, degrees);
@@ -91,19 +156,6 @@ Scale.symmetricDiminished = function (root) {
 	["P5", 7],
 	["13", 9],
 	["b7", 10]
-    ];
-    return Scale.getData(root, degrees);
-};
-
-Scale.lydian = function (root) {
-    var degrees = [
-	["1", 0],
-	["9", 2],
-	["3", 4],
-	["#11", 6],
-	["P5", 7],
-	["13", 9],
-	["7", 11]
     ];
     return Scale.getData(root, degrees);
 };

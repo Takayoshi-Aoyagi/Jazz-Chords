@@ -149,13 +149,13 @@ Scale.altered = function (root) {
 Scale.symmetricDiminished = function (root) {
     var degrees = [
 	["1", 0],
-	["b9", 1],
+	["9", 2],
 	["b3", 3],
-	["3", 4],
+	["11", 5],
 	["#11", 6],
-	["P5", 7],
+	["b13", 8],
 	["13", 9],
-	["b7", 10]
+	["7", 11]
     ];
     return Scale.getData(root, degrees);
 };

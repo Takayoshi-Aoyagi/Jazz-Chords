@@ -308,8 +308,8 @@ app.ScaleGoButton = Backbone.View.extend({
 	case "Symmetric Diminished":
 	    tones = Scale.symmetricDiminished(root);
 	    break;
-	case "Lydian 7th":
-	    tones = Scale.lydian7th(root);
+	case "Lydian b7th":
+	    tones = Scale.lydianb7th(root);
 	    break;
 	case "Whole Tone":
 	    tones = Scale.wholeTone(root);

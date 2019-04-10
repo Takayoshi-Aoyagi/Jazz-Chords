@@ -5,13 +5,13 @@ var Scale = function () {};
 
 Scale.ionian = function (root) {
     var degrees = [
-	["1", 0],
+	["R", 0],
 	["9", 2],
 	["3", 4],
 	["11", 5],
 	["5", 7],
 	["13", 9],
-	["7", 11]
+	["M7", 11]
     ];
     return Scale.getData(root, degrees);
 };
@@ -50,7 +50,7 @@ Scale.lydian = function (root) {
 	["#11", 6],
 	["P5", 7],
 	["13", 9],
-	["7", 11]
+	["M7", 11]
     ];
     return Scale.getData(root, degrees);
 };
@@ -102,7 +102,7 @@ Scale.melodicMinor = function (root) {
 	["11", 5],
 	["P5", 7],
 	["13", 9],
-	["7", 11]
+	["M7", 11]
     ];
     return Scale.getData(root, degrees);
 };
@@ -114,8 +114,8 @@ Scale.harmonicMinor = function (root) {
 	["b3", 3],
 	["11", 5],
 	["P5", 7],
-	["b6", 8],
-	["7", 11]
+	["b13", 8],
+	["M7", 11]
     ];
     return Scale.getData(root, degrees);
 };
@@ -127,7 +127,7 @@ Scale.harmonicMinorPerfect5thBelow = function (root) {
 	["3", 4],
 	["11", 5],
 	["P5", 7],
-	["b6", 8],
+	["b13", 8],
 	["b7", 10]
     ];
     return Scale.getData(root, degrees);
@@ -155,14 +155,14 @@ Scale.symmetricDiminished = function (root) {
 	["#11", 6],
 	["b13", 8],
 	["13", 9],
-	["7", 11]
+	["M7", 11]
     ];
     return Scale.getData(root, degrees);
 };
 
-Scale.lydian7th = function (root) {
+Scale.lydianb7th = function (root) {
     var degrees = [
-	["1", 0],
+	["R", 0],
 	["9", 2],
 	["3", 4],
 	["#11", 6],
@@ -188,9 +188,13 @@ Scale.wholeTone = function (root) {
 Scale.getData = function (root, degrees) {
     var dic = {};
     degrees.forEach(function (degree) {
-	var pitch = Pitch.getPitchName(root, degree[1]);
-	dic[pitch] = degree[0];
+	//var interval = degree[1];
+	var degreeName = degree[0]
+	var interval = Pitch.degreeAlias[degreeName];
+	var pitch = Pitch.getPitchName(root, interval);
+	dic[pitch] = degreeName;
     });
+    console.log(dic)
     return dic;
 };
 

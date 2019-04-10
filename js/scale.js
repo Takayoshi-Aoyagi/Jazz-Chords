@@ -4,192 +4,64 @@
 var Scale = function () {};
 
 Scale.ionian = function (root) {
-    var degrees = [
-	["R", 0],
-	["9", 2],
-	["3", 4],
-	["11", 5],
-	["5", 7],
-	["13", 9],
-	["M7", 11]
-    ];
-    return Scale.getData(root, degrees);
+    return Scale.getData(root, ["R", "9", "3", "11", "5", "13", "M7"]);
 };
 
 Scale.dorian = function (root) {
-    var degrees = [
-	["1", 0],
-	["9", 2],
-	["b3", 3],
-	["11", 5],
-	["P5", 7],
-	["13", 9],
-	["b7", 10]
-    ];
-    return Scale.getData(root, degrees);
+    return Scale.getData(root, ["R", "9", "b3", "11", "5", "13", "b7"]);
 };
 
 Scale.phrygian = function (root) {
-    var degrees = [
-	["1", 0],
-	["b9", 1],
-	["b3", 3],
-	["11", 5],
-	["P5", 7],
-	["b13", 8],
-	["b7", 10]
-    ];
-    return Scale.getData(root, degrees);
+    return Scale.getData(root, ["R", "b9", "b3", "11", "5", "b13", "b7"]);
 };
 
 Scale.lydian = function (root) {
-    var degrees = [
-	["1", 0],
-	["9", 2],
-	["3", 4],
-	["#11", 6],
-	["P5", 7],
-	["13", 9],
-	["M7", 11]
-    ];
-    return Scale.getData(root, degrees);
+    return Scale.getData(root, ["R", "9", "3", "#11", "5", "13", "M7"]);
 };
 
 Scale.mixolydian = function (root) {
-    var degrees = [
-	["1", 0],
-	["9", 2],
-	["3", 4],
-	["11", 5],
-	["P5", 7],
-	["13", 9],
-	["b7", 10]
-    ];
-    return Scale.getData(root, degrees);
+    return Scale.getData(root, ["R", "9", "3", "11", "5", "13", "b7"]);
 };
 
 Scale.aeolian = function (root) {
-    var degrees = [
-	["1", 0],
-	["9", 2],
-	["b3", 3],
-	["11", 5],
-	["P5", 7],
-	["b13", 8],
-	["b7", 10]
-    ];
-    return Scale.getData(root, degrees);
+    return Scale.getData(root, ["R", "9", "b3", "11", "5", "b13", "b7"]);
 };
 
 Scale.locrian = function (root) {
-    var degrees = [
-	["1", 0],
-	["b9", 1],
-	["b3", 3],
-	["11", 5],
-	["b5", 6],
-	["b13", 8],
-	["b7", 10]
-    ];
-    return Scale.getData(root, degrees);
+    return Scale.getData(root, ["R", "b9", "b3", "11", "b5", "b13", "b7"]);
 };
 
 Scale.melodicMinor = function (root) {
-    var degrees = [
-	["1", 0],
-	["9", 2],
-	["b3", 3],
-	["11", 5],
-	["P5", 7],
-	["13", 9],
-	["M7", 11]
-    ];
-    return Scale.getData(root, degrees);
+    return Scale.getData(root, ["R", "9", "b3", "11", "5", "13", "M7"]);
 };
 
 Scale.harmonicMinor = function (root) {
-    var degrees = [
-	["1", 0],
-	["9", 2],
-	["b3", 3],
-	["11", 5],
-	["P5", 7],
-	["b13", 8],
-	["M7", 11]
-    ];
-    return Scale.getData(root, degrees);
+    return Scale.getData(root, ["R", "9", "b3", "11", "5", "b13", "M7"]);
 };
 
 Scale.harmonicMinorPerfect5thBelow = function (root) {
-    var degrees = [
-	["1", 0],
-	["b9", 1],
-	["3", 4],
-	["11", 5],
-	["P5", 7],
-	["b13", 8],
-	["b7", 10]
-    ];
-    return Scale.getData(root, degrees);
+    return Scale.getData(root, ["R", "b9", "3", "11", "5", "b13", "b7"]);
 };
 
 Scale.altered = function (root) {
-    var degrees = [
-	["1", 0],
-	["b9", 1],
-	["#9", 3],
-	["3", 4],
-	["#11", 6],
-	["b13", 8],
-	["b7", 10]
-    ];
-    return Scale.getData(root, degrees);
+    return Scale.getData(root, ["R", "b9", "#9", "3", "#11", "b13", "b7"]);
 };
 
 Scale.symmetricDiminished = function (root) {
-    var degrees = [
-	["1", 0],
-	["9", 2],
-	["b3", 3],
-	["11", 5],
-	["#11", 6],
-	["b13", 8],
-	["13", 9],
-	["M7", 11]
-    ];
-    return Scale.getData(root, degrees);
+    return Scale.getData(root, ["R", "9", "b3", "11", "#11", "b13", "13", "M7"]);
 };
 
 Scale.lydianb7th = function (root) {
-    var degrees = [
-	["R", 0],
-	["9", 2],
-	["3", 4],
-	["#11", 6],
-	["P5", 7],
-	["13", 9],
-	["b7", 10]
-    ];
-    return Scale.getData(root, degrees);
+    return Scale.getData(root, ["R", "9", "3", "#11", "5", "13", "b7"]);
 };
 
 Scale.wholeTone = function (root) {
-    var degrees = [
-	["1", 0],
-	["9", 2],
-	["3", 4],
-	["#11", 6],
-	["b13", 8],
-	["b7", 10]
-    ];
-    return Scale.getData(root, degrees);
+    return Scale.getData(root, ["R", "9", "3", "#11", "b13", "b7"]);
 };
 
 Scale.getData = function (root, degrees) {
     var dic = {};
-    degrees.forEach(function (degree) {
-	//var interval = degree[1];
-	var degreeName = degree[0]
+    degrees.forEach(function (degreeName) {
 	var interval = Pitch.degreeAlias[degreeName];
 	var pitch = Pitch.getPitchName(root, interval);
 	dic[pitch] = degreeName;

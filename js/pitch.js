@@ -5,14 +5,17 @@ var Pitch = function () {};
 Pitch.pitches = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"];
 
 Pitch.degreeAlias = {
+    "R": 0,
+    "1": 0,
     "m": 3,
     "b3": 3,
     "3": 4,
     "M": 4,
     "b5": 6,
     "5": 7,
+    "P5": 7,
     "7": 10,
-    //"b7": 10,
+    "b7": 10,
     "M7": 11,
     "9": 2,
     "b9": 1,
@@ -37,6 +40,7 @@ Pitch.getPitch = function (root, degreeString) {
 Pitch.getPitchName = function (root, degree) {
     var rootIndex = Pitch.getPitchNumberByName(root),
 	index = (rootIndex + degree) % 12;
+    console.log(root, degree, index)
     return Pitch.pitches[index];
 };
 

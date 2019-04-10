@@ -1,75 +1,86 @@
+let Scale;
 
-"use strict";
+(function () {
+    
+    "use strict";
 
-var Scale = function () {};
+    function getData (root, degrees) {
+	const dic = {};
+	degrees.forEach(function (degreeName) {
+	    const interval = Pitch.degreeAlias[degreeName];
+	    const pitch = Pitch.getPitchName(root, interval);
+	    dic[pitch] = degreeName;
+	});
+	console.log(dic)
+	return dic;
+    };
 
-Scale.ionian = function (root) {
-    return Scale.getData(root, ["R", "9", "3", "11", "5", "13", "M7"]);
-};
 
-Scale.dorian = function (root) {
-    return Scale.getData(root, ["R", "9", "b3", "11", "5", "13", "b7"]);
-};
+    class _Scale {
 
-Scale.phrygian = function (root) {
-    return Scale.getData(root, ["R", "b9", "b3", "11", "5", "b13", "b7"]);
-};
+	static ionian(root) {
+	    return getData(root, ["R", "9", "3", "11", "5", "13", "M7"]);
+	};
 
-Scale.lydian = function (root) {
-    return Scale.getData(root, ["R", "9", "3", "#11", "5", "13", "M7"]);
-};
+	static dorian(root) {
+	    return getData(root, ["R", "9", "b3", "11", "5", "13", "b7"]);
+	};
 
-Scale.mixolydian = function (root) {
-    return Scale.getData(root, ["R", "9", "3", "11", "5", "13", "b7"]);
-};
+	static phrygian(root) {
+	    return getData(root, ["R", "b9", "b3", "11", "5", "b13", "b7"]);
+	};
 
-Scale.aeolian = function (root) {
-    return Scale.getData(root, ["R", "9", "b3", "11", "5", "b13", "b7"]);
-};
+	static lydian(root) {
+	    return getData(root, ["R", "9", "3", "#11", "5", "13", "M7"]);
+	};
 
-Scale.locrian = function (root) {
-    return Scale.getData(root, ["R", "b9", "b3", "11", "b5", "b13", "b7"]);
-};
+	static mixolydian(root) {
+	    return getData(root, ["R", "9", "3", "11", "5", "13", "b7"]);
+	};
 
-Scale.melodicMinor = function (root) {
-    return Scale.getData(root, ["R", "9", "b3", "11", "5", "13", "M7"]);
-};
+	static aeolian(root) {
+	    return getData(root, ["R", "9", "b3", "11", "5", "b13", "b7"]);
+	};
 
-Scale.harmonicMinor = function (root) {
-    return Scale.getData(root, ["R", "9", "b3", "11", "5", "b13", "M7"]);
-};
+	static locrian(root) {
+	    return getData(root, ["R", "b9", "b3", "11", "b5", "b13", "b7"]);
+	};
 
-Scale.harmonicMinorPerfect5thBelow = function (root) {
-    return Scale.getData(root, ["R", "b9", "3", "11", "5", "b13", "b7"]);
-};
+	static melodicMinor(root) {
+	    return getData(root, ["R", "9", "b3", "11", "5", "13", "M7"]);
+	};
 
-Scale.altered = function (root) {
-    return Scale.getData(root, ["R", "b9", "#9", "3", "#11", "b13", "b7"]);
-};
+	static harmonicMinor(root) {
+	    return getData(root, ["R", "9", "b3", "11", "5", "b13", "M7"]);
+	};
 
-Scale.symmetricDiminished = function (root) {
-    return Scale.getData(root, ["R", "9", "b3", "11", "#11", "b13", "13", "M7"]);
-};
+	static harmonicMinorPerfect5thBelow(root) {
+	    return getData(root, ["R", "b9", "3", "11", "5", "b13", "b7"]);
+	};
 
-Scale.lydianb7th = function (root) {
-    return Scale.getData(root, ["R", "9", "3", "#11", "5", "13", "b7"]);
-};
+	static altered(root) {
+	    return getData(root, ["R", "b9", "#9", "3", "#11", "b13", "b7"]);
+	};
 
-Scale.wholeTone = function (root) {
-    return Scale.getData(root, ["R", "9", "3", "#11", "b13", "b7"]);
-};
+	static symmetricDiminished(root) {
+	    return getData(root, ["R", "9", "b3", "11", "#11", "b13", "13", "M7"]);
+	};
 
-Scale.getData = function (root, degrees) {
-    var dic = {};
-    degrees.forEach(function (degreeName) {
-	var interval = Pitch.degreeAlias[degreeName];
-	var pitch = Pitch.getPitchName(root, interval);
-	dic[pitch] = degreeName;
-    });
-    console.log(dic)
-    return dic;
-};
+	static lydianb7th(root) {
+	    return getData(root, ["R", "9", "3", "#11", "5", "13", "b7"]);
+	};
 
-if (window && window.module) {
-    module.exports = Scale;
-}
+	static wholeTone(root) {
+	    return getData(root, ["R", "9", "3", "#11", "b13", "b7"]);
+	};
+    }
+
+    if (window && window.module) {
+	module.exports = _Scale;
+	console.log("export")
+    } else {
+	Scale = _Scale;
+    }
+
+}());
+

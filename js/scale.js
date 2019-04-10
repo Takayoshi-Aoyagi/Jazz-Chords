@@ -1,147 +1,86 @@
+let Scale;
 
-"use strict";
+(function () {
+    
+    "use strict";
 
-var Scale = function () {};
+    function getData (root, degrees) {
+	const dic = {};
+	degrees.forEach(function (degreeName) {
+	    const interval = Pitch.degreeAlias[degreeName];
+	    const pitch = Pitch.getPitchName(root, interval);
+	    dic[pitch] = degreeName;
+	});
+	console.log(dic)
+	return dic;
+    };
 
-Scale.major = function (root) {
-    var degrees = [
-	["1", 0],
-	["9", 2],
-	["3", 4],
-	["11", 5],
-	["5", 7],
-	["13", 9],
-	["7", 11]
-    ];
-    return Scale.getData(root, degrees);
-};
 
-Scale.naturalMinor = function (root) {
-    var degrees = [
-	["1", 0],
-	["9", 2],
-	["b3", 3],
-	["11", 5],
-	["P5", 7],
-	["b6", 8],
-	["b7", 10]
-    ];
-    return Scale.getData(root, degrees);
-};
+    class _Scale {
 
-Scale.melodicMinor = function (root) {
-    var degrees = [
-	["1", 0],
-	["9", 2],
-	["b3", 3],
-	["11", 5],
-	["P5", 7],
-	["13", 9],
-	["7", 11]
-    ];
-    return Scale.getData(root, degrees);
-};
+	static ionian(root) {
+	    return getData(root, ["R", "9", "3", "11", "5", "13", "M7"]);
+	};
 
-Scale.harmonicMinor = function (root) {
-    var degrees = [
-	["1", 0],
-	["9", 2],
-	["b3", 3],
-	["11", 5],
-	["P5", 7],
-	["b6", 8],
-	["7", 11]
-    ];
-    return Scale.getData(root, degrees);
-};
+	static dorian(root) {
+	    return getData(root, ["R", "9", "b3", "11", "5", "13", "b7"]);
+	};
 
-Scale.harmonicMinorPerfect5thBelow = function (root) {
-    var degrees = [
-	["1", 0],
-	["b9", 1],
-	["3", 4],
-	["11", 5],
-	["P5", 7],
-	["b6", 8],
-	["b7", 10]
-    ];
-    return Scale.getData(root, degrees);
-};
+	static phrygian(root) {
+	    return getData(root, ["R", "b9", "b3", "11", "5", "b13", "b7"]);
+	};
 
-Scale.altered = function (root) {
-    var degrees = [
-	["1", 0],
-	["b9", 1],
-	["#9", 3],
-	["3", 4],
-	["#11", 6],
-	["b13", 8],
-	["b7", 10]
-    ];
-    return Scale.getData(root, degrees);
-};
+	static lydian(root) {
+	    return getData(root, ["R", "9", "3", "#11", "5", "13", "M7"]);
+	};
 
-Scale.symmetricDiminished = function (root) {
-    var degrees = [
-	["1", 0],
-	["b9", 1],
-	["b3", 3],
-	["3", 4],
-	["#11", 6],
-	["P5", 7],
-	["13", 9],
-	["b7", 10]
-    ];
-    return Scale.getData(root, degrees);
-};
+	static mixolydian(root) {
+	    return getData(root, ["R", "9", "3", "11", "5", "13", "b7"]);
+	};
 
-Scale.lydian = function (root) {
-    var degrees = [
-	["1", 0],
-	["9", 2],
-	["3", 4],
-	["#11", 6],
-	["P5", 7],
-	["13", 9],
-	["7", 11]
-    ];
-    return Scale.getData(root, degrees);
-};
+	static aeolian(root) {
+	    return getData(root, ["R", "9", "b3", "11", "5", "b13", "b7"]);
+	};
 
-Scale.lydian7th = function (root) {
-    var degrees = [
-	["1", 0],
-	["9", 2],
-	["3", 4],
-	["#11", 6],
-	["P5", 7],
-	["13", 9],
-	["b7", 10]
-    ];
-    return Scale.getData(root, degrees);
-};
+	static locrian(root) {
+	    return getData(root, ["R", "b9", "b3", "11", "b5", "b13", "b7"]);
+	};
 
-Scale.wholeTone = function (root) {
-    var degrees = [
-	["1", 0],
-	["9", 2],
-	["3", 4],
-	["#11", 6],
-	["b13", 8],
-	["b7", 10]
-    ];
-    return Scale.getData(root, degrees);
-};
+	static melodicMinor(root) {
+	    return getData(root, ["R", "9", "b3", "11", "5", "13", "M7"]);
+	};
 
-Scale.getData = function (root, degrees) {
-    var dic = {};
-    degrees.forEach(function (degree) {
-	var pitch = Pitch.getPitchName(root, degree[1]);
-	dic[pitch] = degree[0];
-    });
-    return dic;
-};
+	static harmonicMinor(root) {
+	    return getData(root, ["R", "9", "b3", "11", "5", "b13", "M7"]);
+	};
 
-if (window && window.module) {
-    module.exports = Scale;
-}
+	static harmonicMinorPerfect5thBelow(root) {
+	    return getData(root, ["R", "b9", "3", "11", "5", "b13", "b7"]);
+	};
+
+	static altered(root) {
+	    return getData(root, ["R", "b9", "#9", "3", "#11", "b13", "b7"]);
+	};
+
+	static symmetricDiminished(root) {
+	    return getData(root, ["R", "9", "b3", "11", "#11", "b13", "13", "M7"]);
+	};
+
+	static lydianb7th(root) {
+	    return getData(root, ["R", "9", "3", "#11", "5", "13", "b7"]);
+	};
+
+	static wholeTone(root) {
+	    return getData(root, ["R", "9", "3", "#11", "b13", "b7"]);
+	};
+    }
+
+    if (window && window.module) {
+	module.exports = _Scale;
+	console.log("export")
+    } else {
+	Scale = _Scale;
+    }
+
+}());
+

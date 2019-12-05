@@ -63,7 +63,7 @@ let Scale;
 	};
 
 	static symmetricDiminished(root) {
-	    return getData(root, ["R", "9", "b3", "11", "#11", "b13", "13", "M7"]);
+	    return getData(root, ["R", "b9", "#9", "3", "#11", "5", "13", "7"]);
 	};
 
 	static lydianb7th(root) {
